@@ -1,0 +1,45 @@
+# ── Backend framework ────────────────────────────────────
+fastapi
+uvicorn[standard]
+python-dotenv
+pydantic
+pydantic-settings
+
+# ── Database ─────────────────────────────────────────────
+sqlalchemy
+pymysql
+alembic
+
+# ── Cache ────────────────────────────────────────────────
+redis
+
+# ── Auth / Security ──────────────────────────────────────
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
+
+# ── Ingestion sources ────────────────────────────────────
+requests
+httpx
+praw
+python-telegram-bot
+feedparser
+
+# ── Processing / ML ──────────────────────────────────────
+pandas
+numpy
+langdetect
+spacy
+geopy
+scikit-learn
+imagehash
+Pillow
+exifread
+
+# ── Object storage ───────────────────────────────────────
+boto3
+
+# ── Testing ──────────────────────────────────────────────
+pytest
+pytest-asyncio
+httpx

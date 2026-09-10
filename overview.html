@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weather360 | National Weather Overview</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Leaflet -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="overview.css">
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+<aside class="sidebar">
+
+    <div class="sidebar-logo">
+        <div class="logo-icon">
+            <i class="fa-solid fa-cloud-sun"></i>
+        </div>
+
+        <div class="logo-text">
+            <h2>Weather360</h2>
+            <span>National Weather Analytics</span>
+        </div>
+    </div>
+
+
+    <div class="sidebar-live-time">
+        <div class="sidebar-live-label">
+            <span class="live-dot"></span>
+            <span>Live</span>
+        </div>
+
+        <strong id="liveDateTime">
+            Loading...
+        </strong>
+    </div>
+
+
+    <div class="system-online-box">
+        <span class="online-dot"></span>
+        <span>System Online</span>
+    </div>
+
+
+    <div class="sidebar-section-title">
+        MONITORING
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+        <a href="overview.html" class="nav-item active">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Overview</span>
+        </a>
+
+        <a href="user-reports.html" class="nav-item">
+            <i class="fa-solid fa-file-lines"></i>
+            <span>User Reports</span>
+        </a>
+
+        <a href="admin-reports.html" class="nav-item">
+            <i class="fa-solid fa-folder-open"></i>
+            <span>Admin-Reports</span>
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="system-status-block">
+
+            <div class="system-status-icon">
+                <span></span>
+            </div>
+
+            <div>
+                <strong>All systems nominal</strong>
+                <small>Live monitoring active</small>
+            </div>
+
+        </div>
+
+
+        <div class="admin-block">
+
+            <div class="admin-avatar">
+                AD
+            </div>
+
+            <div class="admin-info">
+                <strong>Admin</strong>
+                <span>Administrator</span>
+            </div>
+
+            <i class="fa-solid fa-chevron-down admin-chevron"></i>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- Header -->
+        <header class="top-header">
+
+            <div class="header-left">
+                <span class="header-label">
+                    National Weather Analytics
+                </span>
+            </div>
+
+
+            <div class="header-right">
+
+                <!-- Theme -->
+                <button
+                    class="theme-toggle"
+                    id="themeToggle"
+                    aria-label="Toggle theme"
+                >
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+
+                <div class="header-user">
+
+    <div class="header-avatar" id="headerUserAvatar">
+        <i class="fa-solid fa-user-shield"></i>
+    </div>
+
+    <div>
+        <strong id="headerUserName">Admin</strong>
+        <small>Administrator</small>
+    </div>
+
+</div>
+
+        </header>
+
+
+
+        <!-- Page Heading -->
+        <section class="page-heading">
+
+            <div>
+
+                <h1>National Weather Overview</h1>
+
+                <p>
+                    Real-time weather incidents, verification signals
+                    and local weather conditions across India.
+                </p>
+
+            </div>
+
+
+            <div class="live-status">
+
+                <span class="live-dot"></span>
+
+                <span>Live Monitoring</span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             ROW 1
+        ====================================================== -->
+
+        <section class="overview-row">
+
+
+            <!-- MAP -->
+            <div class="card map-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Live Weather Map of India</h2>
+
+                        <p>
+                            Verified and incoming weather incidents
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="map-wrapper">
+
+                    <div id="indiaMap"></div>
+
+
+                    <!-- Map Legend -->
+                    <div class="map-legend">
+
+                        <div class="legend-item">
+                            <span class="legend-dot verified"></span>
+                            <span>Verified (≥75)</span>
+                        </div>
+
+                        <div class="legend-item">
+                            <span class="legend-dot review"></span>
+                            <span>Under Review (35–74)</span>
+                        </div>
+
+                        <div class="legend-item">
+                            <span class="legend-dot suspicious"></span>
+                            <span>Suspicious / Unverified (&lt;35)</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TOP EVENTS -->
+            <div class="card events-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Top Weather Events</h2>
+                        <p>Currently reported across India</p>
+                    </div>
+
+                    <span class="pan-india">
+                        Pan-India
+                    </span>
+
+                </div>
+
+
+                <div class="events-list">
+
+
+                    <div class="event-item">
+
+                        <div class="event-left">
+
+                            <div class="event-icon rain">
+                                <i class="fa-solid fa-cloud-showers-heavy"></i>
+                            </div>
+
+                            <strong>Heavy Rainfall</strong>
+
+                        </div>
+
+                        <span class="event-count green">
+                            5 Events
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="event-item">
+
+                        <div class="event-left">
+
+                            <div class="event-icon flood">
+                                <i class="fa-solid fa-water"></i>
+                            </div>
+
+                            <strong>Flood</strong>
+
+                        </div>
+
+                        <span class="event-count orange">
+                            2 Events
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="event-item">
+
+                        <div class="event-left">
+
+                            <div class="event-icon storm">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+
+                            <strong>Thunderstorm</strong>
+
+                        </div>
+
+                        <span class="event-count blue">
+                            3 Events
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="event-item">
+
+                        <div class="event-left">
+
+                            <div class="event-icon heat">
+                                <i class="fa-solid fa-temperature-high"></i>
+                            </div>
+
+                            <strong>Heatwave</strong>
+
+                        </div>
+
+                        <span class="event-count green">
+                            1 Event
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="event-item">
+
+                        <div class="event-left">
+
+                            <div class="event-icon fog">
+                                <i class="fa-solid fa-smog"></i>
+                            </div>
+
+                            <strong>Fog</strong>
+
+                        </div>
+
+                        <span class="event-count orange">
+                            1 Event
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             ROW 2 — FULL WIDTH GRAPH
+        ====================================================== -->
+
+        <section class="card activity-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>Incident Activity Trend (24h)</h2>
+
+                    <p>
+                        Hourly weather incident volume
+                    </p>
+
+                </div>
+
+
+                <span class="chart-label">
+                    Hourly Volume
+                </span>
+
+            </div>
+
+
+            <div class="chart-container">
+
+                <canvas id="weatherActivityChart"></canvas>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             ROW 3 — LOCATION SEARCH
+        ====================================================== -->
+
+        <section class="card location-weather-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>Search Weather by Location</h2>
+
+                    <p>
+                        Check the current weather and reported
+                        incidents for any location.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Search -->
+            <div class="location-search">
+
+                <div class="search-box">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <input
+                        type="text"
+                        id="locationInput"
+                        placeholder="Enter city or location, e.g. Kolkata"
+                    >
+
+                </div>
+
+
+                <button
+                    class="search-location-btn"
+                    id="searchLocationBtn"
+                >
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Search
+                </button>
+
+            </div>
+
+
+
+            <!-- Weather Result -->
+            <div
+                class="weather-result"
+                id="weatherResult"
+            >
+
+                <div class="weather-location-heading">
+
+                    <div>
+
+                        <span class="result-label">
+                            CURRENT CONDITIONS
+                        </span>
+
+                        <h3 id="weatherLocation">
+                            Kolkata, India
+                        </h3>
+
+                    </div>
+
+                    <span class="weather-live-badge">
+                        <span class="live-dot"></span>
+                        Live
+                    </span>
+
+                </div>
+
+
+
+                <!-- Main Weather -->
+                <div class="weather-main-row">
+
+
+                    <div class="temperature-block">
+
+                        <div class="weather-icon-large">
+                            <i
+                                id="weatherIcon"
+                                class="fa-solid fa-cloud-sun"
+                            ></i>
+                        </div>
+
+                        <div>
+
+                            <div class="temperature">
+                                <span id="temperature">--</span>
+                                <sup>°C</sup>
+                            </div>
+
+                            <strong id="weatherCondition">
+                                Loading weather...
+                            </strong>
+
+                            <small>
+                                Feels like
+                                <span id="feelsLike">--</span>°C
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Weather Stats -->
+                    <div class="weather-stats">
+
+
+                        <div class="weather-stat">
+
+                            <div class="weather-stat-icon humidity">
+                                <i class="fa-solid fa-droplet"></i>
+                            </div>
+
+                            <div>
+                                <span>Humidity</span>
+                                <strong id="humidity">--%</strong>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="weather-stat">
+
+                            <div class="weather-stat-icon wind">
+                                <i class="fa-solid fa-wind"></i>
+                            </div>
+
+                            <div>
+                                <span>Wind Speed</span>
+                                <strong id="windSpeed">-- km/h</strong>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="weather-stat">
+
+                            <div class="weather-stat-icon rain">
+                                <i class="fa-solid fa-cloud-rain"></i>
+                            </div>
+
+                            <div>
+                                <span>Rainfall</span>
+                                <strong id="rainfall">-- mm</strong>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="weather-stat">
+
+                            <div class="weather-stat-icon visibility">
+                                <i class="fa-solid fa-eye"></i>
+                            </div>
+
+                            <div>
+                                <span>Visibility</span>
+                                <strong id="visibility">-- km</strong>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Incident -->
+                <div class="location-incident">
+
+                    <div class="incident-title">
+
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+
+                        <strong>
+                            Reported Weather Situation
+                        </strong>
+
+                    </div>
+
+
+                    <div class="incident-content">
+
+                        <div>
+
+                            <span>Current Event</span>
+
+                            <strong id="locationEvent">
+                                Checking...
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>Reports</span>
+
+                            <strong id="locationReports">
+                                --
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>Trust Score</span>
+
+                            <strong
+                                class="score-value"
+                                id="locationScore"
+                            >
+                                --
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>Status</span>
+
+                            <strong
+                                class="location-status"
+                                id="locationStatus"
+                            >
+                                --
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Footer -->
+        <footer class="page-footer">
+
+            <span>
+                Weather360 National Weather Analytics
+            </span>
+
+            <span>
+                Reliable weather information for safer communities
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- Leaflet -->
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+
+    <!-- Chart.js -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js">
+    </script>
+
+
+    <!-- Main JS -->
+    <script src="overview.js"></script>
+
+</body>
+
+</html>

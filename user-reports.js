@@ -1430,3 +1430,130 @@ console.log(
 console.log(
     `Live incident markers: ${incidentData.length}`
 );
+/* =========================================================
+   USER ROLE ACCESS
+========================================================= */
+
+const loggedInRole =
+    localStorage.getItem("weather360-user-role");
+
+const userReportsNav =
+    document.querySelector('a[href="user-reports.html"]');
+
+const adminReportsNav =
+    document.querySelector('a[href="admin-reports.html"]');
+
+
+/* ================= ADMIN BLOCK ================= */
+
+if (loggedInRole === "admin") {
+
+    if (userReportsNav) {
+        userReportsNav.style.display = "none";
+    }
+
+    if (adminReportsNav) {
+        adminReportsNav.style.display = "flex";
+    }
+
+    /* Admin should not stay on User Reports */
+
+    window.location.href = "admin-reports.html";
+
+}
+
+
+/* ================= USER ================= */
+
+else if (loggedInRole === "user") {
+
+    if (userReportsNav) {
+        userReportsNav.style.display = "flex";
+    }
+
+    if (adminReportsNav) {
+        adminReportsNav.style.display = "none";
+    }
+
+}
+/* =========================================================
+   ROLE BASED USER NAME + SIDEBAR
+========================================================= */
+
+
+const displayName =
+    loggedInRole === "admin"
+        ? (localStorage.getItem("weather360-admin-name") || "Admin")
+        : (localStorage.getItem("weather360-user-name") || "User");
+
+
+/* ================= SIDEBAR ================= */
+
+const sidebarUserName =
+    document.getElementById("sidebarUserName");
+
+const sidebarUserRole =
+    document.getElementById("sidebarUserRole");
+
+const sidebarAvatar =
+    document.getElementById("sidebarAvatar");
+
+
+if (sidebarUserName) {
+    sidebarUserName.textContent = displayName;
+}
+
+if (sidebarUserRole) {
+    sidebarUserRole.textContent =
+        loggedInRole === "admin"
+            ? "Administrator"
+            : "Member";
+}
+
+if (sidebarAvatar) {
+
+    sidebarAvatar.textContent =
+        displayName
+            .split(" ")
+            .map(word => word[0])
+            .join("")
+            .substring(0, 2)
+            .toUpperCase();
+
+}
+
+
+/* ================= TOP HEADER ================= */
+
+const headerUserName =
+    document.getElementById("headerUserName");
+
+const headerUserRole =
+    document.getElementById("headerUserRole");
+
+const headerUserAvatar =
+    document.getElementById("headerUserAvatar");
+
+
+if (headerUserName) {
+    headerUserName.textContent = displayName;
+}
+
+if (headerUserRole) {
+    headerUserRole.textContent =
+        loggedInRole === "admin"
+            ? "Administrator"
+            : "Member";
+}
+
+if (headerUserAvatar) {
+
+    headerUserAvatar.textContent =
+        displayName
+            .split(" ")
+            .map(word => word[0])
+            .join("")
+            .substring(0, 2)
+            .toUpperCase();
+
+}

@@ -1384,3 +1384,49 @@ function updateSidebarDateTime() {
 
 updateSidebarDateTime();
 setInterval(updateSidebarDateTime, 1000);
+/* =========================================================
+   ADMIN ROLE ACCESS
+========================================================= */
+
+const loggedInRole =
+    localStorage.getItem("weather360-user-role");
+
+const userReportsNav =
+    document.querySelector('a[href="user-reports.html"]');
+
+const adminReportsNav =
+    document.querySelector('a[href="admin-reports.html"]');
+
+
+/* ================= USER BLOCK ================= */
+
+if (loggedInRole === "user") {
+
+    if (userReportsNav) {
+        userReportsNav.style.display = "flex";
+    }
+
+    if (adminReportsNav) {
+        adminReportsNav.style.display = "none";
+    }
+
+    /* User should not stay on Admin Reports */
+
+    window.location.href = "user-reports.html";
+
+}
+
+
+/* ================= ADMIN ================= */
+
+else if (loggedInRole === "admin") {
+
+    if (userReportsNav) {
+        userReportsNav.style.display = "none";
+    }
+
+    if (adminReportsNav) {
+        adminReportsNav.style.display = "flex";
+    }
+
+}

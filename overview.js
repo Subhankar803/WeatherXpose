@@ -1411,3 +1411,170 @@ function updateSidebarDateTime() {
 updateSidebarDateTime();
 
 setInterval(updateSidebarDateTime, 1000);
+/* =========================================================
+   ROLE BASED ACCESS + SIDEBAR
+========================================================= */
+
+const loggedInRole =
+    localStorage.getItem("weather360-user-role");
+
+const loggedInUserName =
+    localStorage.getItem("weather360-user-name");
+
+
+/* ================= ELEMENTS ================= */
+
+const userReportsNav =
+    document.querySelector('a[href="user-reports.html"]');
+
+const adminReportsNav =
+    document.querySelector('a[href="admin-reports.html"]');
+
+const headerUserName =
+    document.getElementById("headerUserName");
+
+const headerUserRole =
+    document.querySelector(".header-user small");
+
+const sidebarUserName =
+    document.getElementById("sidebarUserName");
+
+const sidebarUserRole =
+    document.getElementById("sidebarUserRole");
+
+const sidebarAvatar =
+    document.getElementById("sidebarAvatar");
+
+
+/* ================= USER ================= */
+
+if (loggedInRole === "user") {
+
+    /* Hide Admin Reports */
+
+    if (adminReportsNav) {
+        adminReportsNav.style.display = "none";
+    }
+
+    /* Show User Reports */
+
+    if (userReportsNav) {
+        userReportsNav.style.display = "flex";
+    }
+
+
+    /* Actual User Name */
+
+    const displayName =
+        loggedInUserName || "User";
+
+
+    /* Header */
+
+    if (headerUserName) {
+        headerUserName.textContent =
+            displayName;
+    }
+
+    if (headerUserRole) {
+        headerUserRole.textContent =
+            "Member";
+    }
+
+
+    /* Sidebar */
+
+    if (sidebarUserName) {
+        sidebarUserName.textContent =
+            displayName;
+    }
+
+    if (sidebarUserRole) {
+        sidebarUserRole.textContent =
+            "Member";
+    }
+
+
+    /* Avatar Initials */
+
+    if (sidebarAvatar) {
+
+        sidebarAvatar.textContent =
+            displayName
+                .split(" ")
+                .map(word => word[0])
+                .join("")
+                .substring(0, 2)
+                .toUpperCase();
+
+    }
+
+}
+
+
+/* ================= ADMIN ================= */
+
+else if (loggedInRole === "admin") {
+
+    /* Hide User Reports */
+
+    if (userReportsNav) {
+        userReportsNav.style.display = "none";
+    }
+
+    /* Show Admin Reports */
+
+    if (adminReportsNav) {
+        adminReportsNav.style.display = "flex";
+    }
+
+
+    /* Actual Admin Name */
+
+    const adminName =
+        localStorage.getItem(
+            "weather360-admin-name"
+        ) || "Admin";
+
+
+    /* Header */
+
+    if (headerUserName) {
+        headerUserName.textContent =
+            adminName;
+    }
+
+    if (headerUserRole) {
+        headerUserRole.textContent =
+            "Administrator";
+    }
+
+
+    /* Sidebar */
+
+    if (sidebarUserName) {
+        sidebarUserName.textContent =
+            adminName;
+    }
+
+    if (sidebarUserRole) {
+        sidebarUserRole.textContent =
+            "Administrator";
+    }
+
+
+    /* Avatar Initials */
+
+    if (sidebarAvatar) {
+
+        sidebarAvatar.textContent =
+            adminName
+                .split(" ")
+                .map(word => word[0])
+                .join("")
+                .substring(0, 2)
+                .toUpperCase();
+
+    }
+
+}

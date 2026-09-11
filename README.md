@@ -72,3 +72,27 @@ docker-compose up --build
 2. Implement .fetch() returning the normalized event shape
 3. Register it in scheduler/run_collectors.py
 4. Nothing else needs to change — the verification engine and API layer are source-agnostic
+
+## Starting Process
+
+### Option A: Local & ngrok / Remote Sharing (Recommended)
+This runs the frontend server with the built-in API proxy on port **5000** (avoiding VS Code/IDE Live Preview conflict on port 3000) so that **a single ngrok tunnel** (`ngrok http 5000`) works for remote users, mobile devices, and team testing with full backend API connectivity (no Mixed Content / localhost errors):
+
+1. **Terminal 1 — Backend (FastAPI):**
+   ```bash
+   uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
+   ```
+
+2. **Terminal 2 — Frontend & API Proxy:**
+   ```bash
+   python serve_frontend.py 5000
+   ```
+
+3. **Terminal 3 — ngrok Tunnel (for sharing with team / remote users):**
+   ```bash
+   ngrok http 5000
+   ```
+   *Share the generated HTTPS URL (e.g. `https://your-domain.ngrok-free.dev/home.html` or `/login.html`) with anyone. Everything (auth, OTP, registration, citizen reports, maps) works out-of-the-box!*
+
+4. **Local Access:**
+   Open browser at: [http://localhost:5000/home.html](http://localhost:5000/home.html)

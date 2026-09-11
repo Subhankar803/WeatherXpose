@@ -22,8 +22,7 @@ class Users(BaseModel):
     Name: str = Field(..., min_length=1, max_length=100, nullable=False)
     Email: str = Field(..., min_length=1, max_length=100, nullable=False, unique = True)
     Password: str = Field(..., min_length=1, max_length=255, nullable=False)
-    Phone_No: Optional[str] = Field(default = None, nullable = False, unique = True)
-    Location: str = Field(..., min_length=1, max_length=250, nullable=False)
+    Location: str = Field(..., min_length=1, max_length=550, nullable=False)
     Is_Active: bool = Field(default = True, nullable = False)
     Last_Login: datetime = Field(default = datetime.now, nullable = True)
     Created_at: datetime = Field(default = datetime.now, nullable = False)
@@ -33,7 +32,6 @@ class Admin(BaseModel):
     Name: str = Field(..., min_length=1, max_length=100, nullable=False)
     Email: str = Field(..., min_length=1, max_length=100, nullable=False, unique = True)
     Password: str = Field(..., min_length=1, max_length=255, nullable=False)
-    Phone_No: Optional[str] = Field(default = None, nullable = False, unique = True)
     Permission_Level: PermissionLevel = Field(default = PermissionLevel.REVIEWER, nullable = False)
     Last_Active: datetime = Field(default = datetime.now, nullable = True)
     Created_at: datetime = Field(default = datetime.now, nullable = False)
@@ -52,6 +50,10 @@ class Reports(BaseModel):
     Img_Vid_Url: Optional[str] = Field(default=None, max_length=2048)
     Verification_Score: float = Field(default=0.0, nullable=False)
     Verification_Status: VerificationStatus = Field(default=VerificationStatus.UNDERPROCESS, nullable=False)
+    Admin_Comment: Optional[str] = Field(default=None)
+    Reviewed_By: Optional[str] = Field(default=None)
+    Review_Action: Optional[str] = Field(default=None)
+    Reviewed_at: Optional[datetime] = Field(default=None)
     Created_at: datetime = Field(default=datetime.now, nullable=False)
 
 class Images_Videos(BaseModel):
@@ -64,8 +66,13 @@ class Images_Videos(BaseModel):
 
 class Source(BaseModel):
     Id: Optional[int] = Field(default=None, nullable=False, unique=True)
-    Source_Name: str = Field(..., min_length=1, max_length=255, nullable=False, unique=True)
+    Username: str = Field(..., min_length=1, max_length=255, nullable=False)
+    Source_Name: Optional[str] = Field(default=None, max_length=255)
     Platform: str = Field(..., min_length=1, max_length=255, nullable=False)
+    Trust_Status: str = Field(default="GREY", pattern="^(GREEN|GREY|RED)$")
+    Total_Reports: int = Field(default=0, ge=0, nullable=False)
+    Fake_Reports: int = Field(default=0, ge=0, nullable=False)
+    Warnings_Count: int = Field(default=0, ge=0, nullable=False)
     Total_Claims: int = Field(default=0, ge=0, nullable=False)
     True_Claims: int = Field(default=0, ge=0, nullable=False)
     False_Claims: int = Field(default=0, ge=0, nullable=False)

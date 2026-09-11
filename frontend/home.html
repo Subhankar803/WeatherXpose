@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weather360 | National Weather Analytics</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <header class="navbar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i class="fas fa-cloud-bolt"></i>
+            </div>
+
+            <div class="brand-text">
+                <h2>Weather360</h2>
+                <span>National Weather Analytics</span>
+            </div>
+
+        </div>
+
+
+        <nav class="main-nav">
+
+            <a href="#home" class="active">
+                Home
+            </a>
+
+            <a href="#about">
+                About Platform
+            </a>
+
+            <a href="#how-it-works">
+                How It Works
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <button class="theme-btn" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+
+            <a href="login.html" class="login-btn">
+                Login
+            </a>
+
+            <a href="register.html" class="register-btn">
+                Register
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-container">
+
+            <!-- HERO TEXT -->
+
+            <div class="hero-text">
+
+                <div class="hero-label">
+
+                    <span>REAL-TIME</span>
+                    <b>•</b>
+                    <span>VERIFIED</span>
+                    <b>•</b>
+                    <span>TRUSTED</span>
+
+                </div>
+
+
+                <h1>
+                    Weather Intelligence
+                    <br>
+                    for a <span>Safer India</span>
+                </h1>
+
+
+                <p>
+                    Real-time weather incidents, community reports
+                    and trusted weather signals — unified on one
+                    platform.
+                </p>
+
+            </div>
+
+
+
+            <!-- INDIA WEATHER VISUAL -->
+
+            <div class="weather-map-area">
+
+    <div class="radar-ring ring-1"></div>
+    <div class="radar-ring ring-2"></div>
+    <div class="radar-ring ring-3"></div>
+    <div class="radar-sweep"></div>
+
+    <div class="india-map-container">
+
+        <div class="india-glow"></div>
+
+        <img
+            class="india-map-image"
+            src="https://commons.wikimedia.org/wiki/Special:Redirect/file/India_outline.svg"
+            alt="India weather map"
+        >
+
+        <!-- Delhi -->
+        <div class="weather-point point-delhi">
+            <span class="point-pulse"></span>
+
+            <span class="weather-marker blue-marker">
+                <i class="fas fa-cloud-rain"></i>
+            </span>
+
+            <div class="weather-tooltip">
+                <strong>Delhi</strong>
+                <small>Heavy Rainfall</small>
+                <b>78% Trust</b>
+            </div>
+        </div>
+
+        <!-- Mumbai -->
+        <div class="weather-point point-mumbai">
+            <span class="point-pulse"></span>
+
+            <span class="weather-marker yellow-marker">
+                <i class="fas fa-bolt"></i>
+            </span>
+
+            <div class="weather-tooltip">
+                <strong>Mumbai</strong>
+                <small>Thunderstorm</small>
+                <b>91% Trust</b>
+            </div>
+        </div>
+
+        <!-- Kolkata -->
+        <div class="weather-point point-kolkata">
+            <span class="point-pulse"></span>
+
+            <span class="weather-marker red-marker">
+                <i class="fas fa-hurricane"></i>
+            </span>
+
+            <div class="weather-tooltip">
+                <strong>Kolkata</strong>
+                <small>Cyclone Alert</small>
+                <b>86% Trust</b>
+            </div>
+        </div>
+
+        <!-- Hyderabad -->
+        <div class="weather-point point-hyderabad">
+            <span class="point-pulse"></span>
+
+            <span class="weather-marker blue-marker">
+                <i class="fas fa-cloud-rain"></i>
+            </span>
+
+            <div class="weather-tooltip">
+                <strong>Hyderabad</strong>
+                <small>Heavy Rainfall</small>
+                <b>84% Trust</b>
+            </div>
+        </div>
+
+        <!-- Bhubaneswar -->
+        <div class="weather-point point-bhubaneswar">
+            <span class="point-pulse"></span>
+
+            <span class="weather-marker red-marker">
+                <i class="fas fa-triangle-exclamation"></i>
+            </span>
+
+            <div class="weather-tooltip">
+                <strong>Bhubaneswar</strong>
+                <small>Weather Alert</small>
+                <b>89% Trust</b>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="map-status-card">
+
+        <div class="map-status-title">
+            <span class="live-dot"></span>
+            LIVE WEATHER NETWORK
+        </div>
+
+        <div class="map-status-row">
+            <span>
+                <i class="fas fa-circle"></i>
+                Active Events
+            </span>
+            <strong>15+</strong>
+        </div>
+
+        <div class="map-status-row">
+            <span>
+                <i class="fas fa-shield-halved"></i>
+                Verified
+            </span>
+            <strong>10</strong>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+            <!-- HERO SIDE FEATURES -->
+
+            <div class="hero-features">
+
+                <div class="hero-feature">
+
+                    <div class="hero-feature-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+
+                    <div>
+                        <strong>Live Weather Data</strong>
+                        <small>Real-time updates across India</small>
+                    </div>
+
+                </div>
+
+
+                <div class="hero-feature">
+
+                    <div class="hero-feature-icon">
+                        <i class="fas fa-triangle-exclamation"></i>
+                    </div>
+
+                    <div>
+                        <strong>Incident Monitoring</strong>
+                        <small>Track & analyse weather events</small>
+                    </div>
+
+                </div>
+
+
+                <div class="hero-feature">
+
+                    <div class="hero-feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+
+                    <div>
+                        <strong>Community Reports</strong>
+                        <small>People's reports from the ground</small>
+                    </div>
+
+                </div>
+
+
+                <div class="hero-feature">
+
+                    <div class="hero-feature-icon">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+
+                    <div>
+                        <strong>Verified Information</strong>
+                        <small>Trusted & authentic sources</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         LIVE NATIONAL STATUS
+    ====================================================== -->
+
+    <section class="status-wrapper">
+
+        <div class="status-header">
+
+            <div class="status-title">
+
+                <span class="live-dot"></span>
+
+                <strong>
+                    LIVE NATIONAL WEATHER STATUS
+                </strong>
+
+            </div>
+
+
+            <div class="system-online">
+
+                <span></span>
+
+                System Online
+
+            </div>
+
+        </div>
+
+
+        <div class="status-grid">
+
+            <div class="status-item">
+
+                <div class="status-icon blue">
+                    <i class="fas fa-cloud"></i>
+                </div>
+
+                <div>
+                    <strong>15+</strong>
+                    <span>Weather Events</span>
+                </div>
+
+            </div>
+
+
+            <div class="status-item">
+
+                <div class="status-icon green">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+
+                <div>
+                    <strong>10</strong>
+                    <span>Verified Reports</span>
+                </div>
+
+            </div>
+
+
+            <div class="status-item">
+
+                <div class="status-icon orange">
+                    <i class="fas fa-clock"></i>
+                </div>
+
+                <div>
+                    <strong>3</strong>
+                    <span>Under Review</span>
+                </div>
+
+            </div>
+
+
+            <div class="status-item">
+
+                <div class="status-icon red">
+                    <i class="fas fa-triangle-exclamation"></i>
+                </div>
+
+                <div>
+                    <strong>2</strong>
+                    <span>Unverified</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         WHY WEATHER360
+    ====================================================== -->
+
+    <section class="section" id="about">
+
+        <div class="section-heading">
+
+            <h2>
+                Why Weather<span>360?</span>
+            </h2>
+
+            <p>
+                Advanced technology. Trusted data. Safer communities.
+            </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon green">
+                    <i class="fas fa-clock"></i>
+                </div>
+
+                <h3>
+                    Real-Time Monitoring
+                </h3>
+
+                <p>
+                    Track weather incidents as they happen
+                    across India.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon blue">
+                    <i class="fas fa-database"></i>
+                </div>
+
+                <h3>
+                    Multiple Data Sources
+                </h3>
+
+                <p>
+                    IMD, Windy, local reports, news,
+                    APIs and social media.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon purple">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+
+                <h3>
+                    Multi-Source Verification
+                </h3>
+
+                <p>
+                    Cross-check data from multiple sources
+                    for accuracy and authenticity.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon orange">
+                    <i class="fas fa-star"></i>
+                </div>
+
+                <h3>
+                    Trust-Based Scoring
+                </h3>
+
+                <p>
+                    Every report gets a reliability score
+                    based on multiple signals.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon red">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+
+                <h3>
+                    Admin Moderation
+                </h3>
+
+                <p>
+                    Review reports and verify or flag
+                    suspicious information when needed.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         HOW IT WORKS
+    ====================================================== -->
+
+    <section class="workflow-section" id="how-it-works">
+
+        <div class="section workflow-inner">
+
+            <div class="section-heading">
+
+                <h2>
+                    How It Works
+                </h2>
+
+                <p>
+                    From raw data to verified information —
+                    in a few simple steps.
+                </p>
+
+            </div>
+
+
+            <div class="workflow">
+
+                <div class="workflow-step">
+
+                    <div class="workflow-icon blue">
+                        <i class="fas fa-file-lines"></i>
+                    </div>
+
+                    <strong>
+                        1. Reports & Data
+                    </strong>
+
+                    <p>
+                        Community reports,
+                        weather data & more.
+                    </p>
+
+                </div>
+
+
+                <div class="workflow-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+
+                <div class="workflow-step">
+
+                    <div class="workflow-icon green">
+                        <i class="fas fa-database"></i>
+                    </div>
+
+                    <strong>
+                        2. Data Collection
+                    </strong>
+
+                    <p>
+                        Gather information
+                        from multiple sources.
+                    </p>
+
+                </div>
+
+
+                <div class="workflow-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+
+                <div class="workflow-step">
+
+                    <div class="workflow-icon purple">
+                        <i class="fas fa-magnifying-glass"></i>
+                    </div>
+
+                    <strong>
+                        3. Cross Verification
+                    </strong>
+
+                    <p>
+                        Compare & validate
+                        information.
+                    </p>
+
+                </div>
+
+
+                <div class="workflow-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+
+                <div class="workflow-step">
+
+                    <div class="workflow-icon orange">
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <strong>
+                        4. Trust Score
+                    </strong>
+
+                    <p>
+                        Calculate reliability
+                        score.
+                    </p>
+
+                </div>
+
+
+                <div class="workflow-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+
+                <div class="workflow-step">
+
+                    <div class="workflow-icon red">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+
+                    <strong>
+                        5. Admin Review
+                    </strong>
+
+                    <p>
+                        Manual verification
+                        if needed.
+                    </p>
+
+                </div>
+
+
+                <div class="workflow-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+
+                <div class="workflow-step">
+
+                    <div class="workflow-icon green">
+                        <i class="fas fa-check"></i>
+                    </div>
+
+                    <strong>
+                        6. Verified Information
+                    </strong>
+
+                    <p>
+                        Accurate & trusted
+                        updates.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         TRUST SCORE
+    ====================================================== -->
+
+    <section class="trust-section">
+
+        <div class="trust-container">
+
+
+            <!-- SCORE -->
+
+            <div class="trust-score">
+
+                <div class="score-circle">
+
+                    <div class="score-number">
+
+                        <strong>
+                            92
+                        </strong>
+
+                        <span>
+                            /100
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <strong class="score-title">
+                    TRUST SCORE
+                </strong>
+
+            </div>
+
+
+
+            <!-- SCORE DETAILS -->
+
+            <div class="trust-details">
+
+                <h2>
+                    Every Report Gets a Trust Score
+                </h2>
+
+                <p>
+                    Our multi-factor verification system
+                    ensures only reliable information reaches you.
+                </p>
+
+
+                <div class="trust-checks">
+
+                    <span>
+                        <i class="fas fa-circle-check"></i>
+                        Official Data
+                    </span>
+
+                    <span>
+                        <i class="fas fa-circle-check"></i>
+                        Location Match
+                    </span>
+
+                    <span>
+                        <i class="fas fa-circle-check"></i>
+                        Local Reports
+                    </span>
+
+                    <span>
+                        <i class="fas fa-circle-check"></i>
+                        Account Trust
+                    </span>
+
+                    <span>
+                        <i class="fas fa-circle-check"></i>
+                        Source Agreement
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SCORE RANGE -->
+
+            <div class="score-guide">
+
+                <h3>
+                    Score Range Guide
+                </h3>
+
+
+                <div class="score-row verified">
+
+                    <span>
+                        <i class="fas fa-check"></i>
+                    </span>
+
+                    <strong>
+                        61 – 100
+                    </strong>
+
+                    <small>
+                        VERIFIED
+                    </small>
+
+                </div>
+
+
+                <div class="score-row review">
+
+                    <span>
+                        <i class="fas fa-clock"></i>
+                    </span>
+
+                    <strong>
+                        27 – 60
+                    </strong>
+
+                    <small>
+                        ADMIN REVIEW
+                    </small>
+
+                </div>
+
+
+                <div class="score-row unverified">
+
+                    <span>
+                        <i class="fas fa-triangle-exclamation"></i>
+                    </span>
+
+                    <strong>
+                        0 – 26
+                    </strong>
+
+                    <small>
+                        UNVERIFIED
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ACCOUNT TRUST -->
+
+            <div class="account-trust">
+
+                <h3>
+                    <i class="fas fa-user"></i>
+                    Account Trust
+                </h3>
+
+                <p>
+                    Separate trust information
+                    for user accounts.
+                </p>
+
+
+                <div>
+                    <i class="fas fa-circle-check verified-account"></i>
+                    Verified Account
+                </div>
+
+
+                <div>
+                    <i class="fas fa-circle-check new-account"></i>
+                    New Account
+                </div>
+
+
+                <div>
+                    <i class="fas fa-circle-xmark fraud-account"></i>
+                    Fraud Account
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         WEATHER EVENTS
+    ====================================================== -->
+
+    <section class="section events-section">
+
+        <div class="section-heading">
+
+            <h2>
+                Monitor All Major Weather Events
+            </h2>
+
+            <p>
+                From heavy rainfall to cyclones —
+                get complete coverage across India.
+            </p>
+
+        </div>
+
+
+        <div class="event-grid">
+
+
+            <div class="event-card">
+
+                <div class="event-icon rain">
+                    <i class="fas fa-cloud-showers-heavy"></i>
+                </div>
+
+                <div>
+                    <strong>Heavy Rainfall</strong>
+                    <span>Monitor Event →</span>
+                </div>
+
+            </div>
+
+
+            <div class="event-card">
+
+                <div class="event-icon flood">
+                    <i class="fas fa-water"></i>
+                </div>
+
+                <div>
+                    <strong>Flood</strong>
+                    <span>Monitor Event →</span>
+                </div>
+
+            </div>
+
+
+            <div class="event-card">
+
+                <div class="event-icon cyclone">
+                    <i class="fas fa-hurricane"></i>
+                </div>
+
+                <div>
+                    <strong>Cyclone</strong>
+                    <span>Monitor Event →</span>
+                </div>
+
+            </div>
+
+
+            <div class="event-card">
+
+                <div class="event-icon thunder">
+                    <i class="fas fa-cloud-bolt"></i>
+                </div>
+
+                <div>
+                    <strong>Thunderstorm</strong>
+                    <span>Monitor Event →</span>
+                </div>
+
+            </div>
+
+
+            <div class="event-card">
+
+                <div class="event-icon heatwave">
+                    <i class="fas fa-sun"></i>
+                </div>
+
+                <div>
+                    <strong>Heatwave</strong>
+                    <span>Monitor Event →</span>
+                </div>
+
+            </div>
+
+
+            <div class="event-card">
+
+                <div class="event-icon fog">
+                    <i class="fas fa-smog"></i>
+                </div>
+
+                <div>
+                    <strong>Fog</strong>
+                    <span>Monitor Event →</span>
+                </div>
+
+            </div>
+
+
+            <div class="event-card">
+
+                <div class="event-icon snowfall">
+                    <i class="fas fa-snowflake"></i>
+                </div>
+
+                <div>
+                    <strong>Snowfall</strong>
+                    <span>Monitor Event →</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ROLE BASED ACCESS
+    ====================================================== -->
+
+    <section class="role-section">
+
+        <div class="section">
+
+            <div class="section-heading">
+
+                <h2>
+                    Role-Based Access
+                </h2>
+
+                <p>
+                    Different roles. Different access.
+                    One platform.
+                </p>
+
+            </div>
+
+
+            <div class="role-container">
+
+
+                <!-- USER -->
+
+                <div class="role-card">
+
+                    <div class="role-icon user-role">
+                        <i class="fas fa-user"></i>
+                    </div>
+
+
+                    <div class="role-content">
+
+                        <h3>
+                            User
+                        </h3>
+
+                        <p>
+                            Access weather information
+                            and submit weather reports.
+                        </p>
+
+
+                        <ul>
+
+                            <li>
+                                <i class="fas fa-check"></i>
+                                View Overview
+                            </li>
+
+                            <li>
+                                <i class="fas fa-check"></i>
+                                Access User Reports
+                            </li>
+
+                            <li>
+                                <i class="fas fa-check"></i>
+                                Report Weather Incidents
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ADMIN -->
+
+                <div class="role-card">
+
+                    <div class="role-icon admin-role">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+
+
+                    <div class="role-content">
+
+                        <h3>
+                            Admin
+                        </h3>
+
+                        <p>
+                            Monitor, verify and manage
+                            weather reports.
+                        </p>
+
+
+                        <ul>
+
+                            <li>
+                                <i class="fas fa-check"></i>
+                                View Overview
+                            </li>
+
+                            <li>
+                                <i class="fas fa-check"></i>
+                                Access Admin Reports
+                            </li>
+
+                            <li>
+                                <i class="fas fa-check"></i>
+                                Verify / Mark as Fraud
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- MESSAGE -->
+
+                <div class="role-message">
+
+                    <i class="fas fa-layer-group"></i>
+
+                    <strong>
+                        Same platform.
+                    </strong>
+
+                    <strong>
+                        Different roles.
+                    </strong>
+
+                    <strong>
+                        Shared goal.
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         START WITH WEATHER360
+    ====================================================== -->
+
+    <section class="start-section">
+
+        <div class="start-content">
+
+            <div class="start-icon">
+
+                <i class="fas fa-users"></i>
+
+            </div>
+
+
+            <div>
+
+                <h2>
+                    Start with <span>Weather360</span>
+                </h2>
+
+                <p>
+                    Be a part of a safer, smarter
+                    and more informed India.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="start-buttons">
+
+            <a href="login.html" class="cta-login">
+                Login
+                <i class="fas fa-arrow-right"></i>
+            </a>
+
+
+            <a href="register.html" class="cta-register">
+                Register
+                <i class="fas fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <div class="footer-brand">
+
+            <div class="footer-logo">
+                <i class="fas fa-cloud-bolt"></i>
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Weather360
+                </strong>
+
+                <span>
+                    National Weather Analytics
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="#home">
+                Overview
+            </a>
+
+            <span>|</span>
+
+            <a href="#about">
+                About Platform
+            </a>
+
+            <span>|</span>
+
+            <a href="#how-it-works">
+                How It Works
+            </a>
+
+            <span>|</span>
+
+            <a href="login.html">
+                Login
+            </a>
+
+            <span>|</span>
+
+            <a href="register.html">
+                Register
+            </a>
+
+        </div>
+
+
+        <div class="footer-right">
+
+            <div class="socials">
+
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-x-twitter"></i>
+                <i class="fab fa-linkedin-in"></i>
+                <i class="fab fa-youtube"></i>
+
+            </div>
+
+
+            <small>
+                © 2026 Weather360. All rights reserved.
+            </small>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Weather360 API Client -->
+    <script src="api.js"></script>
+
+    <script src="home.js"></script>
+
+</body>
+
+</html>

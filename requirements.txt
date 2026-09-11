@@ -15,6 +15,8 @@ redis
 
 # ── Auth / Security ──────────────────────────────────────
 python-jose[cryptography]
+PyJWT>=2.8.0
+email-validator>=2.0.0
 passlib[bcrypt]
 python-multipart
 

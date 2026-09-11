@@ -1,31 +1,25 @@
 # Environment / secrets
 .env
 *.env.local
-
 # Python
 __pycache__/
 *.py[cod]
 *.egg-info/
 .venv/
 venv/
-
 # Database
 *.db
 *.sqlite3
-
 # Logs
 *.log
 logs/
-
 # OS / editor
 .DS_Store
 .vscode/
 .idea/
-
 # Media (don't commit uploaded files)
 uploads/
 media_storage/
-
 # Test / coverage
 .pytest_cache/
 htmlcov/

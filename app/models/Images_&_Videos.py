@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import relationship
 from app.models.base import Base
 
@@ -10,5 +10,7 @@ class Images_Videos(Base):
     Exif_GPS = Column(String(255), nullable=True)
     Exif_Timestamp = Column(String(255), nullable=True)
     Exif_Camera = Column(String(255), nullable=True)
+    Is_AI_Generated = Column(Integer, nullable=False, default=0)
+    AI_Score = Column(Float, nullable=False, default=0.0)
 
-    report = relationship("Reports", back_populates="images_videos")
+    report = relationship("Reports", back_populates="images_videos")

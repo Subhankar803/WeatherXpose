@@ -8,9 +8,9 @@ class Action_Log(Base):
     Id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
     Admin_Id = Column(Integer, ForeignKey("admins.Id"), nullable=False)
     Report_Id = Column(Integer, ForeignKey("Reports.Id"), nullable=False)
-    Action = Column(Enum("Approved", "Rejected", "On hold"), nullable=False)
+    Action = Column(Enum("Approved", "Rejected", "On hold", name="action_type"), nullable=False)
     Comment = Column(Text, nullable=True)
     Review_at = Column(DateTime, default=datetime.now, onupdate=datetime.now, nullable=False)
 
     admin = relationship("Admin", back_populates="action_logs")
-    report = relationship("Reports", back_populates="action_logs")
+    report = relationship("Reports", back_populates="action_logs")

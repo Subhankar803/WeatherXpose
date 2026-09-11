@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weather360 - Login</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <!-- ================= TOP BAR ================= -->
+
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i class="fas fa-cloud-sun"></i>
+            </div>
+
+            <div class="brand-text">
+                <h2>Weather360</h2>
+                <span>National Weather Analytics</span>
+            </div>
+
+        </div>
+
+
+        <div class="top-actions">
+
+            <button
+                type="button"
+                class="theme-btn"
+                id="themeToggle">
+
+                <i class="fas fa-moon"></i>
+                <span>Dark</span>
+
+            </button>
+
+
+            <a
+                href="home.html"
+                class="home-btn">
+
+                <i class="fas fa-house"></i>
+                <span>Home</span>
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="login-container">
+
+        <!-- Heading -->
+
+        <div class="login-heading">
+
+            <div class="heading-icon">
+                <i class="fas fa-right-to-bracket"></i>
+            </div>
+
+            <h1 id="loginTitle">
+                User Login
+            </h1>
+
+            <p id="loginSubtitle">
+                Sign in to access your Weather360 reports.
+            </p>
+
+        </div>
+
+
+        <!-- ================= ACCOUNT TYPE ================= -->
+
+        <div class="account-type">
+
+            <button
+                type="button"
+                class="account-tab active"
+                id="userTab">
+
+                <div class="tab-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <div class="tab-text">
+                    <strong>User</strong>
+                    <span>Submit & track reports</span>
+                </div>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="account-tab"
+                id="adminTab">
+
+                <div class="tab-icon">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+
+                <div class="tab-text">
+                    <strong>Admin</strong>
+                    <span>Review & manage reports</span>
+                </div>
+
+            </button>
+
+        </div>
+
+
+        <!-- ================= LOGIN CARD ================= -->
+
+        <section class="login-card">
+
+            <!-- Role indicator -->
+
+            <div class="role-indicator" id="roleIndicator">
+
+                <div class="role-icon">
+                    <i class="fas fa-user" id="roleIcon"></i>
+                </div>
+
+                <div>
+                    <strong id="roleName">
+                        User Account
+                    </strong>
+
+                    <span id="roleDescription">
+                        Access your reports and submissions
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- Login Form -->
+
+<form id="loginForm">
+
+    <!-- Email -->
+    <div class="form-group">
+
+        <label for="loginEmail">
+            Email
+        </label>
+
+        <div class="input-box">
+
+            <i class="fas fa-envelope"></i>
+
+            <input
+                type="email"
+                id="loginEmail"
+                placeholder="Enter your email"
+                required>
+
+        </div>
+
+    </div>
+
+
+    <!-- Password -->
+    <div class="form-group">
+
+        <label for="loginPassword">
+            Password
+        </label>
+
+        <div class="input-box">
+
+            <i class="fas fa-lock"></i>
+
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Enter your password"
+                required>
+
+            <button
+                type="button"
+                class="password-toggle"
+                id="passwordToggle">
+
+                <i class="fas fa-eye"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ADMIN ONLY FIELDS -->
+
+    <div id="adminFields" class="admin-fields">
+
+        <!-- Role -->
+
+        <div class="form-group">
+
+            <label for="adminRole">
+                Role
+            </label>
+
+            <div class="input-box">
+
+                <i class="fas fa-user-shield"></i>
+
+                <select id="adminRole">
+
+                    <option value="reviewer">
+                        Reviewer
+                    </option>
+
+                    <option value="super-admin">
+                        Super Admin
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- Permission Level -->
+
+        <div class="form-group">
+
+            <label for="permissionLevel">
+                Permission Level
+            </label>
+
+            <div class="input-box">
+
+                <i class="fas fa-key"></i>
+
+                <select id="permissionLevel">
+
+                    <option value="reviewer">
+                        Reviewer
+                    </option>
+
+                    <option value="super-admin">
+                        Super Admin
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Remember / Forgot -->
+
+    <div class="login-options">
+
+        <label class="remember-me">
+
+            <input
+                type="checkbox"
+                id="rememberMe">
+
+            <span>Remember me</span>
+
+        </label>
+
+        <a href="#" id="forgotPassword">
+            Forgot Password?
+        </a>
+
+    </div>
+
+
+    <!-- Login -->
+
+    <button
+        type="submit"
+        class="login-btn"
+        id="loginBtn">
+
+        <i class="fas fa-user"></i>
+
+        <span>Login as User</span>
+
+    </button>
+
+</form>
+
+
+            <!-- Register -->
+
+            <div class="register-link">
+
+                <span>Don't have an account?</span>
+
+                <a href="register.html">
+                    Register
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- Security -->
+
+        <div class="security-note">
+
+            <i class="fas fa-shield-halved"></i>
+
+            <span>
+                Secure access to Weather360
+            </span>
+
+        </div>
+
+    </main>
+
+
+    <script src="login.js"></script>
+
+</body>
+
+</html>

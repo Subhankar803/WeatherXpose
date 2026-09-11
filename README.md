@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # National Weather Big Data Analytics Platform — Backend
 
 ## Folder Structure
@@ -96,3 +97,6 @@ This runs the frontend server with the built-in API proxy on port **5000** (avoi
 
 4. **Local Access:**
    Open browser at: [http://localhost:5000/home.html](http://localhost:5000/home.html)
+=======
+# SIH-2026
+>>>>>>> origin/rashda

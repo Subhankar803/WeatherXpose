@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weather360 - Reports</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <link rel="stylesheet" href="admin-reports.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+    <!-- LOGO -->
+    <div class="sidebar-logo">
+        <div class="logo-icon">
+            <i class="fas fa-cloud-sun"></i>
+        </div>
+
+        <div class="logo-text">
+            <h2>Weather360</h2>
+            <span>National Weather Analytics</span>
+        </div>
+    </div>
+
+
+    <!-- LIVE DATE & TIME -->
+    <div class="sidebar-live-time">
+
+        <div class="sidebar-live-label">
+            <span class="live-dot"></span>
+            <span>Live</span>
+        </div>
+
+        <strong id="liveDateTime">
+            Loading...
+        </strong>
+
+    </div>
+
+
+    <!-- SYSTEM ONLINE -->
+    <div class="system-online-box">
+
+        <span class="online-dot"></span>
+
+        <span>System Online</span>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+    <div class="sidebar-section-title">
+        MONITORING
+    </div>
+
+    <nav class="sidebar-nav">
+
+        <a href="overview.html" class="nav-item">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Overview</span>
+        </a>
+
+        <a href="user-reports.html" class="nav-item">
+            <i class="fa-solid fa-file-lines"></i>
+            <span>User Reports</span>
+        </a>
+
+        <a href="admin-reports.html" class="nav-item active">
+            <i class="fa-solid fa-folder-open"></i>
+            <span>Admin-reports</span>
+        </a>
+
+    </nav>
+
+
+    <!-- SIDEBAR BOTTOM -->
+    <div class="sidebar-bottom">
+
+        <div class="system-status-block">
+
+            <div class="system-status-icon">
+                <span></span>
+            </div>
+
+            <div class="system-status-text">
+                <strong>All systems nominal</strong>
+                <small>Live monitoring active</small>
+            </div>
+
+        </div>
+
+
+        <div class="admin-block">
+
+            <div class="admin-avatar">
+                AD
+            </div>
+
+            <div class="admin-info">
+                <strong>Admin</strong>
+                <span>Administrator</span>
+            </div>
+
+            <i class="fas fa-chevron-down admin-chevron"></i>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+    <!-- ================= MAIN ================= -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="topbar">
+
+            <div class="mobile-brand">
+                <i class="fa-solid fa-cloud-sun"></i>
+                <span>Weather360</span>
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="live-indicator">
+                    <span></span>
+                    All systems nominal
+                </div>
+
+                <button class="icon-btn" id="themeToggle" title="Toggle theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <div class="top-profile">
+                    <div class="profile-avatar">AD</div>
+                    <span>Admin</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <div class="content">
+
+            <!-- PAGE HEADING -->
+            <section class="page-heading">
+
+                <div>
+                    <div class="breadcrumb">
+                        <span>India</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                        <span>Reports</span>
+                    </div>
+
+                    <h1>Weather Reports</h1>
+
+                    <p>
+                        Monitor, verify and analyze incoming weather reports
+                    </p>
+                </div>
+
+                <div class="last-updated">
+                    <span class="live-dot"></span>
+                    <span id="lastUpdated">Live monitoring</span>
+                </div>
+
+            </section>
+
+
+            <!-- ================= SUMMARY ================= -->
+            <section class="summary-grid">
+
+                <div class="summary-card">
+                    <div class="summary-icon blue">
+                        <i class="fa-solid fa-file-lines"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Reports</span>
+                        <strong id="totalReports">0</strong>
+                        <small>Incoming reports</small>
+                    </div>
+                </div>
+
+
+                <div class="summary-card">
+                    <div class="summary-icon green">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+
+                    <div>
+                        <span>Verified</span>
+                        <strong id="verifiedReports">0</strong>
+                        <small>Score ≥ 75</small>
+                    </div>
+                </div>
+
+
+                <div class="summary-card">
+                    <div class="summary-icon orange">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+
+                    <div>
+                        <span>Admin Review</span>
+                        <strong id="reviewReports">0</strong>
+                        <small>Score 35–74</small>
+                    </div>
+                </div>
+
+
+                <div class="summary-card">
+                    <div class="summary-icon red">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+
+                    <div>
+                        <span>Unverified</span>
+                        <strong id="unverifiedReports">0</strong>
+                        <small>Score &lt; 35</small>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- ================= FILTERS ================= -->
+            <section class="filter-card">
+
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search report ID, event, location or source..."
+                    >
+                </div>
+
+
+                <div class="status-filters">
+
+                    <button class="filter-btn active" data-status="all">
+                        All
+                    </button>
+
+                    <button class="filter-btn" data-status="verified">
+                        <span class="filter-dot green"></span>
+                        Verified
+                    </button>
+
+                    <button class="filter-btn" data-status="review">
+                        <span class="filter-dot orange"></span>
+                        Admin Review
+                    </button>
+
+                    <button class="filter-btn" data-status="unverified">
+                        <span class="filter-dot red"></span>
+                        Unverified
+                    </button>
+
+                    <button class="filter-btn" data-status="suspicious">
+                        <span class="filter-dot purple"></span>
+                        Suspicious
+                    </button>
+
+                </div>
+
+
+                <div class="filter-actions">
+
+                    <select id="locationFilter">
+                        <option value="all">All Locations</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Patna">Patna</option>
+                        <option value="Hyderabad">Hyderabad</option>
+                        <option value="Kolkata">Kolkata</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Bhubaneswar">Bhubaneswar</option>
+                        <option value="Jaipur">Jaipur</option>
+                        <option value="Kochi">Kochi</option>
+                        <option value="Guwahati">Guwahati</option>
+                        <option value="Srinagar">Srinagar</option>
+                    </select>
+
+                    <button class="reset-btn" id="resetFilters">
+                        <i class="fa-solid fa-rotate-left"></i>
+                        Reset
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= REPORT TABLE ================= -->
+            <section class="reports-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Incoming Reports</h2>
+                        <p>Reports received from users and external sources</p>
+                    </div>
+
+                    <button class="export-btn" id="exportBtn">
+                        <i class="fa-solid fa-download"></i>
+                        Export CSV
+                    </button>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>REPORT</th>
+                                <th>EVENT</th>
+                                <th>LOCATION</th>
+                                <th>SOURCE</th>
+                                <th>ACCOUNT</th>
+                                <th>SCORE</th>
+                                <th>STATUS</th>
+                                <th>TIME</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="reportsTableBody"></tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div class="empty-state" id="emptyState">
+                    <i class="fa-solid fa-file-circle-xmark"></i>
+                    <h3>No reports found</h3>
+                    <p>Try changing your search or filters.</p>
+                </div>
+
+            </section>
+
+
+            <!-- ================= REPORT DETAIL ================= -->
+            <section class="detail-card" id="reportDetailCard">
+
+                <div class="detail-top">
+
+                    <div>
+                        <span class="detail-label">
+                            REPORT DETAIL
+                        </span>
+
+                        <h2 id="detailTitle">Heavy Rainfall</h2>
+
+                        <p id="detailSubtitle">
+                            Incoming weather report
+                        </p>
+                    </div>
+
+                    <div class="detail-status" id="detailDecision">
+                        VERIFIED
+                    </div>
+
+                </div>
+
+
+                <div class="detail-layout">
+
+                    <!-- LEFT -->
+                    <div class="detail-main">
+
+
+                        <!-- ORIGINAL REPORT -->
+                        <div class="detail-section">
+
+                            <div class="section-heading">
+                                <div>
+                                    <i class="fa-solid fa-message"></i>
+                                    <h3>Original Report</h3>
+                                </div>
+
+                                <span class="source-pill" id="detailSource">
+                                    User Report
+                                </span>
+                            </div>
+
+
+                            <div class="original-report">
+
+                                <p id="detailDescription">
+                                    Heavy rainfall has caused waterlogging
+                                    in the reported area.
+                                </p>
+
+                                <div class="hashtags" id="detailHashtags"></div>
+
+                            </div>
+
+
+                            <div class="reporter-row">
+
+                                <div class="reporter-avatar" id="reporterAvatar">
+                                    AR
+                                </div>
+
+                                <div>
+                                    <strong id="detailReporter">
+                                        Anonymous Reporter
+                                    </strong>
+
+                                    <span id="detailSubmitted">
+                                        Submitted recently
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- CROSS REFERENCE -->
+                        <div class="detail-section">
+
+                            <div class="section-heading">
+
+                                <div>
+                                    <i class="fa-solid fa-arrows-left-right"></i>
+                                    <h3>Cross-Verification</h3>
+                                </div>
+
+                                <span class="match-badge" id="matchBadge">
+                                    96% Match
+                                </span>
+
+                            </div>
+
+
+                            <div class="cross-grid">
+
+                                <div class="cross-box">
+
+                                    <span class="cross-label">
+                                        CITIZEN / SOURCE REPORT
+                                    </span>
+
+                                    <strong id="crossCitizen">
+                                        Heavy Rainfall
+                                    </strong>
+
+                                    <p id="crossCitizenText">
+                                        Weather event reported by source.
+                                    </p>
+
+                                </div>
+
+
+                                <div class="cross-arrow">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+
+
+                                <div class="cross-box">
+
+                                    <span class="cross-label">
+                                        OFFICIAL / EXTERNAL DATA
+                                    </span>
+
+                                    <strong id="crossOfficial">
+                                        IMD Supporting Data
+                                    </strong>
+
+                                    <p id="crossOfficialText">
+                                        Independent weather information
+                                        supports the report.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- VERIFICATION REASONING -->
+                        <div class="detail-section">
+
+                            <div class="section-heading">
+
+                                <div>
+                                    <i class="fa-solid fa-microscope"></i>
+                                    <h3>Verification Reasoning</h3>
+                                </div>
+
+                                <span class="confidence-pill">
+                                    Model confidence
+                                    <strong id="modelConfidence">0.94</strong>
+                                </span>
+
+                            </div>
+
+
+                            <div class="reasoning-grid">
+
+                                <div class="reason-card">
+                                    <span>LOCATION MATCH</span>
+                                    <strong id="locationMatch">97</strong>
+                                    <small>/100</small>
+                                    <div class="mini-progress">
+                                        <span id="locationProgress"></span>
+                                    </div>
+                                </div>
+
+
+                                <div class="reason-card">
+                                    <span>IMAGE INTEGRITY</span>
+                                    <strong id="imageIntegrity">92</strong>
+                                    <small>/100</small>
+                                    <div class="mini-progress">
+                                        <span id="imageProgress"></span>
+                                    </div>
+                                </div>
+
+
+                                <div class="reason-card">
+                                    <span>SOURCE AGREEMENT</span>
+                                    <strong id="sourceAgreement">94</strong>
+                                    <small>/100</small>
+                                    <div class="mini-progress">
+                                        <span id="sourceProgress"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="reason-text">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                                <span id="reasonText">
+                                    The reported location, time and weather
+                                    conditions are consistent with supporting
+                                    independent sources.
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <!-- SIGNAL BREAKDOWN -->
+                        <div class="detail-section">
+
+                            <div class="section-heading">
+
+                                <div>
+                                    <i class="fa-solid fa-chart-column"></i>
+                                    <h3>Signal Breakdown</h3>
+                                </div>
+
+                                <span class="score-pill">
+                                    Event Trust Score
+                                </span>
+
+                            </div>
+
+
+                            <div class="signals">
+
+                                <div class="signal-row">
+                                    <div>
+                                        <strong>Windy</strong>
+                                        <span id="windyText">
+                                            Strong supporting signal
+                                        </span>
+                                    </div>
+                                    <b id="windyScore">+15</b>
+                                </div>
+
+
+                                <div class="signal-row">
+                                    <div>
+                                        <strong>IMD</strong>
+                                        <span id="imdText">
+                                            Supporting official report
+                                        </span>
+                                    </div>
+                                    <b id="imdScore">+30</b>
+                                </div>
+
+
+                                <div class="signal-row">
+                                    <div>
+                                        <strong>Local Reports</strong>
+                                        <span id="localText">
+                                            5+ supporting reports
+                                        </span>
+                                    </div>
+                                    <b id="localScore">+20</b>
+                                </div>
+
+
+                                <div class="signal-row">
+                                    <div>
+                                        <strong>Account Trust</strong>
+                                        <span id="accountSignalText">
+                                            Verified account
+                                        </span>
+                                    </div>
+                                    <b id="accountSignalScore">+10</b>
+                                </div>
+
+
+                                <div class="signal-row">
+                                    <div>
+                                        <strong>News Verification</strong>
+                                        <span id="newsText">
+                                            Supporting news
+                                        </span>
+                                    </div>
+                                    <b id="newsScore">+10</b>
+                                </div>
+
+                            </div>
+
+
+                            <div class="score-result">
+
+                                <div>
+                                    <span>FINAL EVENT TRUST SCORE</span>
+                                    <strong id="detailScore">85</strong>
+                                    <small>/100</small>
+                                </div>
+
+                                <div class="score-bar">
+                                    <span id="detailScoreBar"></span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RIGHT -->
+                    <div class="detail-side">
+
+
+                        <!-- LOCATION -->
+                        <div class="side-card">
+
+                            <div class="side-card-header">
+                                <h3>Location</h3>
+
+                                <button id="openMapBtn">
+                                    Open Map
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </button>
+                            </div>
+
+                            <div id="detailMap"></div>
+
+                            <div class="coordinates">
+
+                                <strong id="detailLocation">
+                                    Mumbai, Maharashtra
+                                </strong>
+
+                                <span id="detailCoordinates">
+                                    19.0404° N, 72.8610° E
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ATTACHMENTS -->
+                        <div class="side-card">
+
+                            <div class="side-card-header">
+                                <h3>Attachments</h3>
+                                <span id="attachmentCount">1 file</span>
+                            </div>
+
+
+                            <div class="attachment-preview" id="attachmentPreview">
+
+                                <i class="fa-solid fa-image"></i>
+
+                                <span id="attachmentName">
+                                    IMG_1001.jpg
+                                </span>
+
+                                <small>
+                                    Evidence attachment
+                                </small>
+
+                            </div>
+
+
+                            <div class="metadata-list">
+
+                                <div>
+                                    <span>GPS Metadata</span>
+                                    <b id="gpsStatus">Available</b>
+                                </div>
+
+                                <div>
+                                    <span>Timestamp</span>
+                                    <b id="metadataTime">Available</b>
+                                </div>
+
+                                <div>
+                                    <span>AI / Manipulation</span>
+                                    <b id="aiStatus">No issue detected</b>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ACCOUNT STATUS -->
+                        <div class="side-card">
+
+                            <div class="side-card-header">
+                                <h3>Account Status</h3>
+                            </div>
+
+
+                            <div class="account-status-box">
+
+                                <div
+                                    class="account-status-dot"
+                                    id="accountStatusDot"
+                                ></div>
+
+                                <div>
+                                    <strong id="detailAccountStatus">
+                                        Verified Account
+                                    </strong>
+
+                                    <span id="accountStatusDescription">
+                                        Trusted source
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- DECISION -->
+                        <div class="decision-card">
+
+    <span>FINAL DECISION</span>
+
+    <strong id="decisionText">
+        VERIFIED
+    </strong>
+
+    <p id="decisionDescription">
+        Report can be shown on the platform.
+    </p>
+
+    <div class="admin-actions" id="adminActions">
+
+        <button class="verify-btn" id="verifyReportBtn">
+            <i class="fa-solid fa-check"></i>
+            Verify Report
+        </button>
+
+        <button class="fraud-btn" id="fraudReportBtn">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            Mark as Fraud
+        </button>
+
+    </div>
+
+</div>
+
+                    </div>
+
+                </div>
+
+
+                <button class="close-detail" id="closeDetail">
+                    <i class="fa-solid fa-xmark"></i>
+                    Close Report Details
+                </button>
+
+            </section>
+
+        </div>
+
+
+        <!-- FOOTER -->
+        <footer>
+            <span>
+                <i class="fa-solid fa-circle"></i>
+                Weather360 · National Weather Analytics Platform
+            </span>
+
+            <span>
+                Real-time verification dashboard
+            </span>
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="admin-reports.js"></script>
+
+</body>
+</html>

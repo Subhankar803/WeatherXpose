@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Report a Weather Event | Weather360</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Leaflet -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <!-- Report Event CSS -->
+    <link rel="stylesheet" href="report-event.css">
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside class="sidebar">
+
+        <!-- Logo -->
+        <div class="sidebar-logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-cloud-sun"></i>
+            </div>
+
+            <div class="logo-text">
+                <h2>Weather360</h2>
+                <span>National Weather Analytics</span>
+            </div>
+
+        </div>
+
+
+        <!-- System Online -->
+        <div class="system-online-box">
+
+            <span class="online-dot"></span>
+
+            <div>
+                <strong>System Online</strong>
+                <span>All services operational</span>
+            </div>
+
+        </div>
+
+
+        <!-- Navigation -->
+        <div class="sidebar-section-title">
+            Monitoring
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="user-reports.html" class="nav-item">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>User Reports</span>
+            </a>
+
+        </nav>
+
+
+        <!-- Sidebar Bottom -->
+        <div class="sidebar-bottom">
+
+            <div class="system-status-block">
+
+                <i class="fa-solid fa-server"></i>
+
+                <div>
+                    <strong>System Status</strong>
+                    <small>Monitoring active</small>
+                </div>
+
+            </div>
+
+
+            <div class="admin-block">
+
+                <div class="admin-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div>
+                    <strong>User</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- Header -->
+        <header class="top-header">
+
+            <div class="header-spacer"></div>
+
+            <div class="header-actions">
+
+                <!-- Theme -->
+                <button
+                    class="theme-toggle"
+                    id="themeToggle"
+                    title="Toggle theme"
+                    aria-label="Toggle dark mode"
+                >
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+
+                <!-- User -->
+                <div class="header-user">
+
+                    <div class="header-avatar">
+                        U
+                    </div>
+
+                    <div class="header-user-info">
+                        <strong id="headerUserName">
+                            User
+                        </strong>
+
+                        
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAGE CONTENT
+             ================================================= -->
+
+        <section class="page-container">
+
+
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+
+                <a href="user-reports.html">
+                    Dashboard
+                </a>
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+                <span>
+                    Report a Weather Event
+                </span>
+
+            </div>
+
+
+            <!-- Page Heading -->
+            <div class="page-heading">
+
+                <div>
+                    <h1>Report a Weather Event</h1>
+
+                    <p>
+                        Submit a local weather incident for verification.
+                        Your report will be checked using multiple verification signals.
+                    </p>
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FORM GRID
+                 ================================================= -->
+
+            <div class="report-layout">
+
+
+                <!-- =============================================
+                     LEFT COLUMN
+                     ============================================= -->
+
+                <div class="left-column">
+
+
+                    <!-- A. EVENT INFORMATION -->
+                    <section class="form-card">
+
+                        <div class="card-title-row">
+
+                            <div class="section-title">
+
+                                <div class="section-icon blue">
+                                    <i class="fa-solid fa-cloud-bolt"></i>
+                                </div>
+
+                                <div>
+                                    <h2>A. Event Information</h2>
+                                    <p>Describe the weather incident</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="eventType">
+                                Event Type
+                                <span>*</span>
+                            </label>
+
+                            <select id="eventType">
+
+                                <option value="">
+                                    Select Incident Type
+                                </option>
+
+                                <option value="Heavy Rainfall">
+                                    Heavy Rainfall
+                                </option>
+
+                                <option value="Flood">
+                                    Flood
+                                </option>
+
+                                <option value="Thunderstorm">
+                                    Thunderstorm
+                                </option>
+
+                                <option value="Cyclone">
+                                    Cyclone
+                                </option>
+
+                                <option value="Heatwave">
+                                    Heatwave
+                                </option>
+
+                                <option value="Fog">
+                                    Fog
+                                </option>
+
+                                <option value="Heavy Snowfall">
+                                    Heavy Snowfall
+                                </option>
+
+                                <option value="Strong Winds">
+                                    Strong Winds
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="incidentDescription">
+                                Incident Description
+                                <span>*</span>
+                            </label>
+
+                            <textarea
+                                id="incidentDescription"
+                                rows="5"
+                                placeholder="Provide accurate details such as exact location, rainfall intensity, water depth, wind severity, damage observed, affected roads, trees fallen, etc."
+                            ></textarea>
+
+                            <div class="field-hint">
+                                <i class="fa-solid fa-circle-info"></i>
+                                Clear and objective descriptions help improve automated verification.
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- B. LOCATION INFORMATION -->
+                    <section class="form-card">
+
+                        <div class="card-title-row">
+
+                            <div class="section-title">
+
+                                <div class="section-icon green">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+
+                                <div>
+                                    <h2>B. Location Information</h2>
+                                    <p>Where did the incident occur?</p>
+                                </div>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="location-btn"
+                                id="currentLocationBtn"
+                            >
+                                <i class="fa-solid fa-crosshairs"></i>
+                                Use My Current Location
+                            </button>
+
+                        </div>
+
+
+                        <div class="location-fields">
+
+                            <div class="form-group">
+
+                                <label for="city">
+                                    City / Region
+                                    <span>*</span>
+                                </label>
+
+                                <select id="city">
+
+                                    <option value="">
+                                        Select City
+                                    </option>
+
+                                    <option value="Kolkata">
+                                        Kolkata, West Bengal
+                                    </option>
+
+                                    <option value="Mumbai">
+                                        Mumbai, Maharashtra
+                                    </option>
+
+                                    <option value="Delhi">
+                                        Delhi
+                                    </option>
+
+                                    <option value="Ahmedabad">
+                                        Ahmedabad, Gujarat
+                                    </option>
+
+                                    <option value="Jaipur">
+                                        Jaipur, Rajasthan
+                                    </option>
+
+                                    <option value="Lucknow">
+                                        Lucknow, Uttar Pradesh
+                                    </option>
+
+                                    <option value="Patna">
+                                        Patna, Bihar
+                                    </option>
+
+                                    <option value="Bhubaneswar">
+                                        Bhubaneswar, Odisha
+                                    </option>
+
+                                    <option value="Guwahati">
+                                        Guwahati, Assam
+                                    </option>
+
+                                    <option value="Chennai">
+                                        Chennai, Tamil Nadu
+                                    </option>
+
+                                    <option value="Bengaluru">
+                                        Bengaluru, Karnataka
+                                    </option>
+
+                                    <option value="Hyderabad">
+                                        Hyderabad, Telangana
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="locality">
+                                    Specific Locality / Landmark
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="locality"
+                                    placeholder="e.g. Gariahat, Howrah Bridge, Link Road"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="latitude">
+                                    Latitude (°N)
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="latitude"
+                                    placeholder="22.5726"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="longitude">
+                                    Longitude (°E)
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="longitude"
+                                    placeholder="88.3639"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Map -->
+                        <div class="map-section">
+
+                            <div class="map-label-row">
+
+                                <label>
+                                    <i class="fa-solid fa-map-location-dot"></i>
+                                    Interactive Geolocation Map
+                                </label>
+
+                                <button
+                                    type="button"
+                                    class="center-marker-btn"
+                                    id="centerMarkerBtn"
+                                >
+                                    <i class="fa-solid fa-location-crosshairs"></i>
+                                    Center Marker
+                                </button>
+
+                            </div>
+
+
+                            <div id="reportMap"></div>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- C. INCIDENT DATE & TIME -->
+                    <section class="form-card">
+
+                        <div class="card-title-row">
+
+                            <div class="section-title">
+
+                                <div class="section-icon orange">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+
+                                <div>
+                                    <h2>C. Incident Date & Time</h2>
+                                    <p>When did the event occur?</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="date-time-grid">
+
+                            <div class="form-group">
+
+                                <label for="incidentDate">
+                                    Incident Date
+                                    <span>*</span>
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="incidentDate"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="incidentTime">
+                                    Incident Time
+                                    <span>*</span>
+                                </label>
+
+                                <input
+                                    type="time"
+                                    id="incidentTime"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     RIGHT COLUMN
+                     ============================================= -->
+
+                <div class="right-column">
+
+
+                    <!-- D. EVIDENCE ATTACHMENTS -->
+                    <section class="form-card">
+
+                        <div class="section-title">
+
+                            <div class="section-icon purple">
+                                <i class="fa-solid fa-camera"></i>
+                            </div>
+
+                            <div>
+                                <h2>D. Evidence Attachments</h2>
+                                <p>Upload supporting image or video</p>
+                            </div>
+
+                        </div>
+
+
+                        <!-- Upload Box -->
+                        <label
+                            class="upload-box"
+                            for="mediaFile"
+                            id="uploadBox"
+                        >
+
+                            <div class="upload-icon">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                            </div>
+
+                            <strong>
+                                Upload Incident Image or Video
+                            </strong>
+
+                            <span>
+                                Drop files here or click to browse
+                            </span>
+
+                            <small>
+                                JPEG, PNG, WEBP, MP4
+                            </small>
+
+                            <span class="choose-file-btn">
+                                Select Media File
+                            </span>
+
+                        </label>
+
+
+                        <input
+                            type="file"
+                            id="mediaFile"
+                            accept="image/jpeg,image/png,image/webp,video/mp4"
+                            hidden
+                        >
+
+
+                        <!-- Selected File -->
+                        <div
+                            class="selected-file"
+                            id="selectedFile"
+                        >
+
+                            <div class="file-icon">
+                                <i class="fa-solid fa-file-image"></i>
+                            </div>
+
+                            <div class="file-details">
+
+                                <strong id="fileName">
+                                    No file selected
+                                </strong>
+
+                                <span id="fileSize">
+                                    Upload evidence to continue
+                                </span>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                id="removeFile"
+                                class="remove-file"
+                            >
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+
+                        </div>
+
+
+
+                        <!-- Platform -->
+                        <div class="form-group source-group">
+
+                            <label for="sourcePlatform">
+                                Source / Platform
+                                <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="sourcePlatform"
+                                placeholder="e.g. Instagram, X, Facebook, WhatsApp, Camera"
+                            >
+
+                            <div class="field-hint">
+                                <i class="fa-solid fa-circle-info"></i>
+                                Enter the platform or source from which this evidence was obtained.
+                            </div>
+
+                        </div>
+
+
+                        <!-- User ID -->
+                        <div class="form-group">
+
+                            <label for="sourceUserId">
+                                User ID
+                                <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="sourceUserId"
+                                placeholder="Enter the user ID / username"
+                            >
+
+                            <div class="field-hint">
+                                <i class="fa-solid fa-user"></i>
+                                Enter the account ID or username associated with the evidence.
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- E. EVIDENCE METADATA -->
+                    <section class="form-card metadata-card">
+
+                        <div class="section-title">
+
+                            <div class="section-icon cyan">
+                                <i class="fa-solid fa-fingerprint"></i>
+                            </div>
+
+                            <div>
+                                <h2>E. Evidence Metadata</h2>
+                                <p>Automatically extracted evidence information</p>
+                            </div>
+
+                            <span class="metadata-badge">
+                                EXIF / FILE DATA
+                            </span>
+
+                        </div>
+
+
+                        <div class="metadata-list">
+
+                            <div class="metadata-row">
+
+                                <span>
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    GPS Location
+                                </span>
+
+                                <strong id="metadataGps">
+                                    Not available
+                                </strong>
+
+                            </div>
+
+
+                            <div class="metadata-row">
+
+                                <span>
+                                    <i class="fa-regular fa-calendar"></i>
+                                    Capture Time
+                                </span>
+
+                                <strong id="metadataTime">
+                                    Not available
+                                </strong>
+
+                            </div>
+
+
+                            <div class="metadata-row">
+
+                                <span>
+                                    <i class="fa-solid fa-mobile-screen-button"></i>
+                                    Device / Source
+                                </span>
+
+                                <strong id="metadataDevice">
+                                    Browser upload
+                                </strong>
+
+                            </div>
+
+
+                            <div class="metadata-row">
+
+                                <span>
+                                    <i class="fa-solid fa-file"></i>
+                                    File Format / Size
+                                </span>
+
+                                <strong id="metadataFile">
+                                    Not available
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- F. VERIFICATION PREVIEW -->
+                    <section class="form-card verification-card">
+
+                        <div class="section-title">
+
+                            <div class="section-icon blue">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+
+                            <div>
+                                <h2>F. Verification Preview</h2>
+                                <p>Initial automated checks</p>
+                            </div>
+
+                            <span class="automated-badge">
+                                <span class="mini-live-dot"></span>
+                                Automated Pre-Check
+                            </span>
+
+                        </div>
+
+
+                        <div class="verification-list">
+
+
+                            <!-- Metadata -->
+                            <div class="verification-item">
+
+                                <div class="verification-icon">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+
+                                <div class="verification-text">
+
+                                    <strong>
+                                        Metadata Check
+                                    </strong>
+
+                                    <span>
+                                        File information will be checked for available timestamps and metadata.
+                                    </span>
+
+                                </div>
+
+                                <span
+                                    class="check-status"
+                                    id="metadataStatus"
+                                >
+                                    PENDING
+                                </span>
+
+                            </div>
+
+
+                            <!-- Location -->
+                            <div class="verification-item">
+
+                                <div class="verification-icon">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+
+                                <div class="verification-text">
+
+                                    <strong>
+                                        Location Consistency
+                                    </strong>
+
+                                    <span>
+                                        Report location will be compared with submitted evidence.
+                                    </span>
+
+                                </div>
+
+                                <span
+                                    class="check-status"
+                                    id="locationStatus"
+                                >
+                                    PENDING
+                                </span>
+
+                            </div>
+
+
+                            <!-- AI -->
+                            <div class="verification-item">
+
+                                <div class="verification-icon">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                </div>
+
+                                <div class="verification-text">
+
+                                    <strong>
+                                        AI / Manipulation Check
+                                    </strong>
+
+                                    <span>
+                                        Evidence can be screened for possible manipulation or synthetic content.
+                                    </span>
+
+                                </div>
+
+                                <span
+                                    class="check-status"
+                                    id="aiStatus"
+                                >
+                                    PENDING
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Submit -->
+                        <button
+                            type="button"
+                            class="submit-report-btn"
+                            id="submitReportBtn"
+                        >
+                            <i class="fa-solid fa-paper-plane"></i>
+                            Submit Report for Verification
+                        </button>
+
+
+                        <p class="submit-note">
+                            <i class="fa-solid fa-lock"></i>
+                            Your report will be processed through the Weather360 verification workflow.
+                        </p>
+
+                    </section>
+
+                </div>
+
+            </div>
+
+
+            <!-- Footer -->
+            <footer class="page-footer">
+
+                <span>
+                    Weather360 National Weather Analytics
+                </span>
+
+                <span>
+                    PS 26069 · Disaster Management
+                </span>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Report Event JS -->
+    <script src="report-event.js"></script>
+
+</body>
+
+</html>

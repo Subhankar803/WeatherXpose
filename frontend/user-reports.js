@@ -1,10 +1,10 @@
 /* =========================================================
-   WEATHER360 - USER REPORTS CONTROLLER (API CONNECTED)
+   WEATHER XPOSE - USER REPORTS CONTROLLER (API CONNECTED)
    ========================================================= */
 
 // --- 1. USER LOCATION & AUTH RESOLUTION ---
 const DEFAULT_LOCATION = "Kolkata";
-let userLocation = localStorage.getItem("weather360-location") || localStorage.getItem("userLocation") || DEFAULT_LOCATION;
+let userLocation = localStorage.getItem("weatherxpose-location") || localStorage.getItem("userLocation") || DEFAULT_LOCATION;
 
 function getCleanCityName(loc) {
     if (!loc) return DEFAULT_LOCATION;
@@ -41,7 +41,7 @@ const adminReportsNav = document.querySelector('a[href="admin-reports.html"]');
    3. ROLE ACCESS ENFORCEMENT
    ========================================================= */
 
-const loggedInRole = localStorage.getItem("weather360-user-role");
+const loggedInRole = localStorage.getItem("weatherxpose-user-role");
 if (loggedInRole === "admin") {
     // If admin enters user portal, make admin nav available and redirect
     if (adminReportsNav) adminReportsNav.style.display = "flex";
@@ -77,7 +77,7 @@ async function loadUserProfile() {
                 userLocation = getCleanCityName(profile.location);
             }
         } else {
-            const savedName = localStorage.getItem("weather360-user-name") || "Citizen User";
+            const savedName = localStorage.getItem("weatherxpose-user-name") || "Citizen User";
             if (sidebarUserName) sidebarUserName.textContent = savedName;
             if (headerUserName) headerUserName.textContent = savedName;
         }
@@ -119,7 +119,7 @@ function updateThemeIcon(isDark) {
     icon.className = isDark ? "fa-solid fa-sun" : "fa-solid fa-moon";
 }
 
-const savedTheme = localStorage.getItem("weather360-theme");
+const savedTheme = localStorage.getItem("weatherxpose-theme");
 if (savedTheme === "dark") {
     document.body.classList.add("dark-mode");
     updateThemeIcon(true);
@@ -131,7 +131,7 @@ if (themeToggle) {
     themeToggle.addEventListener("click", () => {
         document.body.classList.toggle("dark-mode");
         const isDark = document.body.classList.contains("dark-mode");
-        localStorage.setItem("weather360-theme", isDark ? "dark" : "light");
+        localStorage.setItem("weatherxpose-theme", isDark ? "dark" : "light");
         updateThemeIcon(isDark);
         updateChartTheme(isDark);
     });
@@ -424,4 +424,4 @@ setTimeout(() => {
     indiaMap.invalidateSize();
 }, 300);
 
-console.log("Weather360 User Reports portal initialized.");
+console.log("Weather Xpose User Reports portal initialized.");

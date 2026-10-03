@@ -1,5 +1,5 @@
 /* =========================================================
-   WEATHER360 - OVERVIEW CONTROLLER (API CONNECTED)
+   WEATHER XPOSE - OVERVIEW CONTROLLER (API CONNECTED)
    ========================================================= */
 
 // --- Marker colors based on truth score ---
@@ -151,7 +151,7 @@ function updateThemeIcon(isDark) {
     icon.className = isDark ? "fa-solid fa-sun" : "fa-solid fa-moon";
 }
 
-const savedTheme = localStorage.getItem("weather360-theme");
+const savedTheme = localStorage.getItem("weatherxpose-theme");
 if (savedTheme === "dark") {
     document.body.classList.add("dark-mode");
     updateThemeIcon(true);
@@ -163,7 +163,7 @@ if (themeToggle) {
     themeToggle.addEventListener("click", () => {
         document.body.classList.toggle("dark-mode");
         const isDark = document.body.classList.contains("dark-mode");
-        localStorage.setItem("weather360-theme", isDark ? "dark" : "light");
+        localStorage.setItem("weatherxpose-theme", isDark ? "dark" : "light");
         updateThemeIcon(isDark);
         updateChartTheme();
     });
@@ -505,8 +505,8 @@ setInterval(updateSidebarDateTime, 1000);
    8. ROLE-BASED ACCESS & USER BADGES
    ========================================================= */
 
-const loggedInRole = localStorage.getItem("weather360-user-role");
-const loggedInUserName = localStorage.getItem("weather360-user-name");
+const loggedInRole = localStorage.getItem("weatherxpose-user-role");
+const loggedInUserName = localStorage.getItem("weatherxpose-user-name");
 
 const userReportsNav = document.querySelector('a[href="user-reports.html"]');
 const adminReportsNav = document.querySelector('a[href="admin-reports.html"]');
@@ -520,7 +520,7 @@ if (loggedInRole === "admin") {
     if (userReportsNav) userReportsNav.style.display = "none";
     if (adminReportsNav) adminReportsNav.style.display = "flex";
 
-    const adminName = localStorage.getItem("weather360-admin-name") || "Admin";
+    const adminName = localStorage.getItem("weatherxpose-admin-name") || "Admin";
     if (headerUserName) headerUserName.textContent = adminName;
     if (headerUserRole) headerUserRole.textContent = "Administrator";
     if (sidebarUserName) sidebarUserName.textContent = adminName;

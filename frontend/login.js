@@ -1,5 +1,5 @@
 /* =========================================================
-   WEATHER360 - LOGIN CONTROLLER (API CONNECTED)
+   WEATHER XPOSE - LOGIN CONTROLLER (API CONNECTED)
    ========================================================= */
 
 // --- DOM Elements ---
@@ -52,7 +52,7 @@ function setLoginRole(role) {
         adminTab.classList.add("active");
 
         loginTitle.textContent = "Admin Login";
-        loginSubtitle.textContent = "Sign in to access the Weather360 administration panel.";
+        loginSubtitle.textContent = "Sign in to access the Weather Xpose administration panel.";
 
         roleIcon.className = "fas fa-shield-halved";
         roleName.textContent = "Admin Account";
@@ -65,7 +65,7 @@ function setLoginRole(role) {
             <span>Login as Admin</span>
         `;
 
-        const savedAdminEmail = localStorage.getItem("weather360-admin-email");
+        const savedAdminEmail = localStorage.getItem("weatherxpose-admin-email");
         if (savedAdminEmail) {
             loginEmail.value = savedAdminEmail;
         }
@@ -74,7 +74,7 @@ function setLoginRole(role) {
         userTab.classList.add("active");
 
         loginTitle.textContent = "User Login";
-        loginSubtitle.textContent = "Sign in to access your Weather360 reports.";
+        loginSubtitle.textContent = "Sign in to access your Weather Xpose reports.";
 
         roleIcon.className = "fas fa-user";
         roleName.textContent = "User Account";
@@ -87,7 +87,7 @@ function setLoginRole(role) {
             <span>Login as User</span>
         `;
 
-        const savedUserEmail = localStorage.getItem("weather360-user-email");
+        const savedUserEmail = localStorage.getItem("weatherxpose-user-email");
         if (savedUserEmail) {
             loginEmail.value = savedUserEmail;
         }
@@ -152,13 +152,13 @@ loginForm.addEventListener("submit", async function (event) {
 
             // Store JWT access token & admin details
             setAuthToken(result.access_token);
-            localStorage.setItem("weather360-login-status", "logged-in");
-            localStorage.setItem("weather360-user-role", "admin");
-            localStorage.setItem("weather360-admin-email", email);
-            localStorage.setItem("weather360-admin-role", selectedRaw);
-            localStorage.setItem("weather360-admin-permission", result.account_info?.permission_level || selectedRole);
-            localStorage.setItem("weather360-user-name", result.account_info?.name || "Admin");
-            localStorage.setItem("weather360-admin-name", result.account_info?.name || "Admin");
+            localStorage.setItem("weatherxpose-login-status", "logged-in");
+            localStorage.setItem("weatherxpose-user-role", "admin");
+            localStorage.setItem("weatherxpose-admin-email", email);
+            localStorage.setItem("weatherxpose-admin-role", selectedRaw);
+            localStorage.setItem("weatherxpose-admin-permission", result.account_info?.permission_level || selectedRole);
+            localStorage.setItem("weatherxpose-user-name", result.account_info?.name || "Admin");
+            localStorage.setItem("weatherxpose-admin-name", result.account_info?.name || "Admin");
 
             showNotice(`Welcome back, ${result.account_info?.name || 'Administrator'}!`, "success");
 
@@ -174,12 +174,12 @@ loginForm.addEventListener("submit", async function (event) {
 
             // Store JWT access token & user details
             setAuthToken(result.access_token);
-            localStorage.setItem("weather360-login-status", "logged-in");
-            localStorage.setItem("weather360-user-role", "user");
-            localStorage.setItem("weather360-user-email", email);
-            localStorage.setItem("weather360-user-name", result.account_info?.name || "User");
+            localStorage.setItem("weatherxpose-login-status", "logged-in");
+            localStorage.setItem("weatherxpose-user-role", "user");
+            localStorage.setItem("weatherxpose-user-email", email);
+            localStorage.setItem("weatherxpose-user-name", result.account_info?.name || "User");
             if (result.account_info?.location) {
-                localStorage.setItem("weather360-location", result.account_info.location);
+                localStorage.setItem("weatherxpose-location", result.account_info.location);
             }
 
             showNotice(`Welcome back, ${result.account_info?.name || 'Citizen'}!`, "success");
@@ -337,7 +337,7 @@ if (forgotPasswordForm) {
 /* ================= THEME ================= */
 
 function applyTheme() {
-    const savedTheme = localStorage.getItem("weather360-theme");
+    const savedTheme = localStorage.getItem("weatherxpose-theme");
 
     if (savedTheme === "light") {
         document.body.classList.add("light");
@@ -356,7 +356,7 @@ if (themeToggle) {
     themeToggle.addEventListener("click", function () {
         document.body.classList.toggle("light");
         const isLight = document.body.classList.contains("light");
-        localStorage.setItem("weather360-theme", isLight ? "light" : "dark");
+        localStorage.setItem("weatherxpose-theme", isLight ? "light" : "dark");
         applyTheme();
     });
 }

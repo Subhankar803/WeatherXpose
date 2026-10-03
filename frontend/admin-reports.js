@@ -1,5 +1,5 @@
 /* =========================================================
-   WEATHER360 - ADMIN REPORTS CONTROLLER (API CONNECTED)
+   WEATHER XPOSE - ADMIN REPORTS CONTROLLER (API CONNECTED)
    ========================================================= */
 
 // --- Global Data Store ---
@@ -35,9 +35,9 @@ let detailMarker = null;
    1. AUTHENTICATION & ROLE ACCESS
    ========================================================= */
 
-const loggedInRole = localStorage.getItem("weather360-user-role");
-const adminName = localStorage.getItem("weather360-admin-name") || "Administrator";
-const adminPermission = localStorage.getItem("weather360-admin-permission") || "Admin";
+const loggedInRole = localStorage.getItem("weatherxpose-user-role");
+const adminName = localStorage.getItem("weatherxpose-admin-name") || "Administrator";
+const adminPermission = localStorage.getItem("weatherxpose-admin-permission") || "Admin";
 
 const userReportsNav = document.querySelector('a[href="user-reports.html"]');
 const adminReportsNav = document.querySelector('a[href="admin-reports.html"]');
@@ -105,7 +105,7 @@ setInterval(updateSidebarDateTime, 1000);
    ========================================================= */
 
 function applyTheme() {
-    const savedTheme = localStorage.getItem("weather360-theme");
+    const savedTheme = localStorage.getItem("weatherxpose-theme");
     if (savedTheme === "light") {
         document.body.classList.add("light");
         if (themeToggle) themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
@@ -120,7 +120,7 @@ if (themeToggle) {
     themeToggle.addEventListener("click", () => {
         document.body.classList.toggle("light");
         const isLight = document.body.classList.contains("light");
-        localStorage.setItem("weather360-theme", isLight ? "light" : "dark");
+        localStorage.setItem("weatherxpose-theme", isLight ? "light" : "dark");
         themeToggle.innerHTML = isLight ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
     });
 }
@@ -247,11 +247,11 @@ async function loadAllReports() {
             };
         });
 
-        console.log(`[Weather360 Admin] Successfully loaded ${reports.length} reports from database.`);
+        console.log(`[Weather Xpose Admin] Successfully loaded ${reports.length} reports from database.`);
         renderReports();
         updateLocationFilterOptions();
     } catch (err) {
-        console.error("[Weather360 Admin] Error loading reports from API:", err);
+        console.error("[Weather Xpose Admin] Error loading reports from API:", err);
         showNotice("Could not load reports: " + (err.message || err), "error");
     }
 }
@@ -745,4 +745,4 @@ window.renderReports = renderReports;
 
 loadAllReports();
 updateSummaryStats();
-console.log("Weather360 Admin Reports control room active.");
+console.log("Weather Xpose Admin Reports control room active.");

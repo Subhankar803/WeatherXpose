@@ -1,5 +1,5 @@
 /* =========================================================
-   WEATHER360 - REPORT EVENT JS
+   WEATHER XPOSE - REPORT EVENT JS
    ========================================================= */
 
 
@@ -30,7 +30,7 @@ function updateThemeIcon(isDark) {
 
 
 const savedTheme =
-    localStorage.getItem("weather360-theme");
+    localStorage.getItem("weatherxpose-theme");
 
 
 if (savedTheme === "dark") {
@@ -55,7 +55,7 @@ if (themeToggle) {
             document.body.classList.contains("dark-mode");
 
         localStorage.setItem(
-            "weather360-theme",
+            "weatherxpose-theme",
             isDark ? "dark" : "light"
         );
 
@@ -425,7 +425,7 @@ if (currentLocationBtn) {
                     // Auto-resolve city and state using backend reverse-geocoding
                     try {
                         let res = null;
-                        const token = localStorage.getItem("weather360-token") || "";
+                        const token = localStorage.getItem("weatherxpose-token") || "";
                         const raw = await fetch("/api/auth/resolve-location", {
                             method: "POST",
                             headers: {
@@ -1168,9 +1168,9 @@ setTimeout(() => {
    17. USER AUTH SESSION AUTO-POPULATION
    ========================================================= */
 
-const loggedInRole = localStorage.getItem("weather360-user-role");
-const loggedInUserName = localStorage.getItem("weather360-user-name");
-const loggedInUserEmail = localStorage.getItem("weather360-user-email");
+const loggedInRole = localStorage.getItem("weatherxpose-user-role");
+const loggedInUserName = localStorage.getItem("weatherxpose-user-name");
+const loggedInUserEmail = localStorage.getItem("weatherxpose-user-email");
 
 const headerUserName = document.getElementById("headerUserName");
 const headerAvatar = document.querySelector(".header-avatar");
@@ -1189,4 +1189,4 @@ if (loggedInUserName) {
 // Initial pre-check status indicators
 runPreChecks();
 
-console.log("Weather360 Report Event page loaded successfully.");
+console.log("Weather Xpose Report Event page loaded successfully.");

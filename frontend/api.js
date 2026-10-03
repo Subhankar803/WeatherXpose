@@ -1,5 +1,5 @@
 /**
- * Weather360 - Centralized API Service Client
+ * Weather Xpose - Centralized API Service Client
  * Connects frontend interfaces to the FastAPI backend at http://127.0.0.1:8000.
  *
  * Provides:
@@ -16,13 +16,13 @@ function getApiBaseUrl() {
         const queryBase = params.get("api_base") || params.get("backend");
         if (queryBase) {
             const clean = queryBase.replace(/\/$/, "");
-            localStorage.setItem("weather360-api-base", clean);
+            localStorage.setItem("weatherxpose-api-base", clean);
             return clean;
         }
     } catch (e) {}
 
     // 2. Explicit override saved in localStorage
-    const saved = localStorage.getItem("weather360-api-base");
+    const saved = localStorage.getItem("weatherxpose-api-base");
     if (saved) return saved.replace(/\/$/, "");
 
     // 3. Global window config if set by page
@@ -46,38 +46,49 @@ function getApiBaseUrl() {
 // Global accessor for current API base
 const API_BASE_URL = getApiBaseUrl();
 
+// Automatically migrate legacy session keys to Weather Xpose
+try {
+    const legacyPrefix = ["weather", "360", "-"].join("");
+    for (let i = localStorage.length - 1; i >= 0; i--) {
+        const k = localStorage.key(i);
+        if (k && k.startsWith(legacyPrefix)) {
+            const newKey = "weatherxpose-" + k.slice(legacyPrefix.length);
+            if (!localStorage.getItem(newKey)) {
+                localStorage.setItem(newKey, localStorage.getItem(k));
+            }
+            localStorage.removeItem(k);
+        }
+    }
+} catch (_) {}
+
 // --- Token Management Helpers ---
 function getAuthToken() {
-    return localStorage.getItem("weather360-auth-token") || "";
+    return localStorage.getItem("weatherxpose-auth-token") || localStorage.getItem("weatherxpose-token") || "";
 }
 
 function setAuthToken(token) {
     if (token) {
-        localStorage.setItem("weather360-auth-token", token);
+        localStorage.setItem("weatherxpose-auth-token", token);
+        localStorage.setItem("weatherxpose-token", token);
     }
 }
 
 function clearAuth() {
-    localStorage.removeItem("weather360-auth-token");
-    localStorage.removeItem("weather360-token");
-    localStorage.removeItem("weather360-login-status");
-    localStorage.removeItem("weather360-user-role");
-    localStorage.removeItem("weather360-user-name");
-    localStorage.removeItem("weather360-user-email");
-    localStorage.removeItem("weather360-admin-email");
-    localStorage.removeItem("weather360-admin-role");
-    localStorage.removeItem("weather360-admin-permission");
-    localStorage.removeItem("weather360-admin-name");
-    localStorage.removeItem("weather360-location");
+    [
+        "weatherxpose-auth-token", "weatherxpose-token", "weatherxpose-login-status",
+        "weatherxpose-user-role", "weatherxpose-user-name", "weatherxpose-user-email",
+        "weatherxpose-admin-email", "weatherxpose-admin-role", "weatherxpose-admin-permission",
+        "weatherxpose-admin-name", "weatherxpose-location"
+    ].forEach(k => localStorage.removeItem(k));
     sessionStorage.clear();
 }
 
 function getUserRole() {
-    return localStorage.getItem("weather360-user-role") || "guest";
+    return localStorage.getItem("weatherxpose-user-role") || "guest";
 }
 
 function isLoggedIn() {
-    return (localStorage.getItem("weather360-login-status") === "logged-in") || !!getAuthToken();
+    return (localStorage.getItem("weatherxpose-login-status") === "logged-in") || !!getAuthToken();
 }
 
 async function logout() {
@@ -126,7 +137,7 @@ async function apiFetch(endpoint, options = {}) {
             headers,
         });
     } catch (fetchErr) {
-        console.error("[Weather360 API Connection Error]", fetchErr, "Target URL:", url);
+        console.error("[Weather Xpose API Connection Error]", fetchErr, "Target URL:", url);
         const isRemote = window.location.hostname.includes("ngrok") || window.location.protocol === "https:";
         let friendlyMsg = fetchErr.message || "Failed to fetch";
         if (friendlyMsg.includes("Failed to fetch") || friendlyMsg.includes("NetworkError")) {
@@ -199,7 +210,7 @@ async function apiUpload(endpoint, formData) {
             body: formData,
         });
     } catch (fetchErr) {
-        console.error("[Weather360 Upload Connection Error]", fetchErr, "Target URL:", url);
+        console.error("[Weather Xpose Upload Connection Error]", fetchErr, "Target URL:", url);
         const friendlyMsg = `Upload connection error. Target URL: ${url}`;
         const netErr = new Error(friendlyMsg);
         netErr.originalError = fetchErr;
@@ -220,10 +231,10 @@ async function apiUpload(endpoint, formData) {
 
 // --- Global UI Toast / Alert Notification Helper ---
 function showNotice(message, type = "info", duration = 4000) {
-    let container = document.getElementById("weather360-toast-container");
+    let container = document.getElementById("weatherxpose-toast-container");
     if (!container) {
         container = document.createElement("div");
-        container.id = "weather360-toast-container";
+        container.id = "weatherxpose-toast-container";
         container.style.cssText = `
             position: fixed;
             top: 20px;
@@ -368,9 +379,9 @@ window.API_BASE_URL = API_BASE_URL;
 window.getApiBaseUrl = getApiBaseUrl;
 window.setApiBaseUrl = (url) => {
     if (url) {
-        localStorage.setItem("weather360-api-base", url.replace(/\/$/, ""));
+        localStorage.setItem("weatherxpose-api-base", url.replace(/\/$/, ""));
     } else {
-        localStorage.removeItem("weather360-api-base");
+        localStorage.removeItem("weatherxpose-api-base");
     }
 };
 window.getAuthToken = getAuthToken;
@@ -387,9 +398,9 @@ AuthAPI.logout = logout;
 
 // Auto-inject universal styles for Logout Button
 (function injectLogoutStyles() {
-    if (document.getElementById("weather360-logout-style")) return;
+    if (document.getElementById("weatherxpose-logout-style")) return;
     const style = document.createElement("style");
-    style.id = "weather360-logout-style";
+    style.id = "weatherxpose-logout-style";
     style.textContent = `
         .logout-btn {
             display: inline-flex;

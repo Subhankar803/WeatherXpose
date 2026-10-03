@@ -1,5 +1,5 @@
 /* =========================================================
-   WEATHER360 - REGISTRATION CONTROLLER (API CONNECTED)
+   WEATHER XPOSE - REGISTRATION CONTROLLER (API CONNECTED)
    ========================================================= */
 
 // --- DOM Elements ---
@@ -54,7 +54,7 @@ adminTab.addEventListener("click", function () {
 /* ================= THEME TOGGLE ================= */
 
 function applyTheme() {
-    const savedTheme = localStorage.getItem("weather360-theme");
+    const savedTheme = localStorage.getItem("weatherxpose-theme");
     if (savedTheme === "light") {
         document.body.classList.add("light");
         if (themeToggle) {
@@ -72,7 +72,7 @@ if (themeToggle) {
     themeToggle.addEventListener("click", function () {
         document.body.classList.toggle("light");
         const isLight = document.body.classList.contains("light");
-        localStorage.setItem("weather360-theme", isLight ? "light" : "dark");
+        localStorage.setItem("weatherxpose-theme", isLight ? "light" : "dark");
         applyTheme();
     });
 }
@@ -360,11 +360,11 @@ userRegisterForm.addEventListener("submit", async function (event) {
 
         // Store JWT token and session details
         setAuthToken(result.access_token);
-        localStorage.setItem("weather360-login-status", "logged-in");
-        localStorage.setItem("weather360-user-role", "user");
-        localStorage.setItem("weather360-user-email", email);
-        localStorage.setItem("weather360-user-name", name);
-        localStorage.setItem("weather360-location", location || "India");
+        localStorage.setItem("weatherxpose-login-status", "logged-in");
+        localStorage.setItem("weatherxpose-user-role", "user");
+        localStorage.setItem("weatherxpose-user-email", email);
+        localStorage.setItem("weatherxpose-user-name", name);
+        localStorage.setItem("weatherxpose-location", location || "India");
 
         showNotice("User account registered successfully!", "success");
 
@@ -438,12 +438,12 @@ adminRegisterForm.addEventListener("submit", async function (event) {
 
         // Store JWT token and session details
         setAuthToken(result.access_token);
-        localStorage.setItem("weather360-login-status", "logged-in");
-        localStorage.setItem("weather360-user-role", "admin");
-        localStorage.setItem("weather360-admin-email", email);
-        localStorage.setItem("weather360-admin-name", name);
-        localStorage.setItem("weather360-admin-role", permissionRaw);
-        localStorage.setItem("weather360-admin-permission", permission);
+        localStorage.setItem("weatherxpose-login-status", "logged-in");
+        localStorage.setItem("weatherxpose-user-role", "admin");
+        localStorage.setItem("weatherxpose-admin-email", email);
+        localStorage.setItem("weatherxpose-admin-name", name);
+        localStorage.setItem("weatherxpose-admin-role", permissionRaw);
+        localStorage.setItem("weatherxpose-admin-permission", permission);
 
         showNotice("Admin account registered successfully!", "success");
 

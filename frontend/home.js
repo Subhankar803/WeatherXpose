@@ -1,5 +1,5 @@
 /* =========================================================
-   WEATHER360 HOME PAGE
+   WEATHER XPOSE HOME PAGE
 ========================================================= */
 
 
@@ -11,7 +11,7 @@ const themeToggle =
     document.getElementById("themeToggle");
 
 const savedTheme =
-    localStorage.getItem("weather360-theme");
+    localStorage.getItem("weatherxpose-theme");
 
 
 if (savedTheme === "dark") {
@@ -35,7 +35,7 @@ themeToggle.addEventListener("click", function () {
 
 
     localStorage.setItem(
-        "weather360-theme",
+        "weatherxpose-theme",
         darkMode ? "dark" : "light"
     );
 
@@ -209,7 +209,7 @@ document.head.appendChild(style);
    AUTH STATE AWARENESS & LIVE NETWORK COUNTS
    ========================================================= */
 
-const loggedInRole = localStorage.getItem("weather360-user-role");
+const loggedInRole = localStorage.getItem("weatherxpose-user-role");
 const loginBtn = document.querySelector(".nav-actions .login-btn");
 const registerBtn = document.querySelector(".nav-actions .register-btn");
 

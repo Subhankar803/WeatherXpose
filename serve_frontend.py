@@ -1,5 +1,5 @@
 """
-Weather360 - Frontend Server & API Reverse Proxy
+Weather Xpose - Frontend Server & API Reverse Proxy
 Serves static frontend files from 'frontend/' and reverse-proxies '/api' and '/uploads'
 requests to the FastAPI backend at http://127.0.0.1:8000.
 
@@ -39,6 +39,12 @@ class ThreadedHTTPServer(socketserver.ThreadingMixIn, http.server.HTTPServer):
 class ProxyAndStaticHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=FRONTEND_DIR, **kwargs)
+
+    def end_headers(self):
+        self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
+        self.send_header("Pragma", "no-cache")
+        self.send_header("Expires", "0")
+        super().end_headers()
 
     def is_proxy_path(self):
         parsed = urllib.parse.urlparse(self.path)
@@ -144,7 +150,7 @@ class ProxyAndStaticHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 def run():
     server = ThreadedHTTPServer(("", PORT), ProxyAndStaticHTTPRequestHandler)
     print(f"=================================================================")
-    print(f" Weather360 Unified Frontend & API Proxy Server running on port {PORT}")
+    print(f" Weather Xpose Unified Frontend & API Proxy Server running on port {PORT}")
     print(f" - Frontend static directory: {FRONTEND_DIR}")
     print(f" - Forwarding /api requests to: {BACKEND_URL}")
     print(f" - Local URL: http://127.0.0.1:{PORT}/home.html")

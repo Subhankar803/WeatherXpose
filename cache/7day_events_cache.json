@@ -127,6 +127,34 @@
       "id": "kolkata_1791010036",
       "created_at": "2026-10-03T06:47:16.550095",
       "expires_at_timestamp": 1791614836.5501003
+    },
+    {
+      "city": "Kolkata",
+      "state": "West Bengal",
+      "latitude": 22.5726,
+      "longitude": 88.3639,
+      "event_type": "Thunderstorm",
+      "description": "Heavy rainfall at kolkata",
+      "verification_score": 69,
+      "status": "Othentic",
+      "timestamp": "2026-09-07 15:35",
+      "id": "kolkata_1791011953",
+      "created_at": "2026-10-03T07:19:13.435754",
+      "expires_at_timestamp": 1791616753.4357595
+    },
+    {
+      "city": "Kolkata",
+      "state": "West Bengal",
+      "latitude": 22.5726,
+      "longitude": 88.3639,
+      "event_type": "Cyclone",
+      "description": "Arnab cyclone hits many places near kolkata",
+      "verification_score": 85.0,
+      "status": "Othentic",
+      "timestamp": "2026-10-03T07:22:47.562470",
+      "id": "kolkata_1791012167",
+      "created_at": "2026-10-03T07:22:47.562481",
+      "expires_at_timestamp": 1791616967.5624826
     }
   ],
   "mumbai": [
@@ -139,6 +167,16 @@
       "city": "Mumbai",
       "created_at": "2026-10-03T06:54:51.999601",
       "expires_at_timestamp": 1791615291.9996068
+    },
+    {
+      "event_type": "flooding",
+      "description": "Severe waterlogging in Dadar",
+      "verification_score": 85.0,
+      "status": "Othentic",
+      "id": "mumbai_1791011399",
+      "city": "Mumbai",
+      "created_at": "2026-10-03T07:09:59.222172",
+      "expires_at_timestamp": 1791616199.2221873
     }
   ],
   "bhubaneswar": [
@@ -155,6 +193,49 @@
       "id": "bhubaneswar_1791010736",
       "created_at": "2026-10-03T06:58:56.389185",
       "expires_at_timestamp": 1791615536.3891938
+    },
+    {
+      "city": "Bhubaneswar",
+      "state": "Odisha",
+      "latitude": 20.2961,
+      "longitude": 85.8245,
+      "event_type": "Heavy Rainfall",
+      "description": "Heavy rainfall in bhubeneswhar",
+      "verification_score": 79,
+      "status": "Othentic",
+      "timestamp": "2026-08-25 15:35",
+      "id": "bhubaneswar_1791011817",
+      "created_at": "2026-10-03T07:16:57.850910",
+      "expires_at_timestamp": 1791616617.8509161
+    },
+    {
+      "city": "Bhubaneswar",
+      "state": "Odisha",
+      "latitude": 20.2961,
+      "longitude": 85.8245,
+      "event_type": "Heavy Rainfall",
+      "description": "Heavy Rainfall",
+      "verification_score": 79,
+      "status": "Othentic",
+      "timestamp": "2026-08-25 12:56",
+      "id": "bhubaneswar_1791012876",
+      "created_at": "2026-10-03T07:34:36.850284",
+      "expires_at_timestamp": 1791617676.8502991
+    },
+    {
+      "city": "Bhubaneswar",
+      "state": "Odisha",
+      "latitude": 20.2961,
+      "longitude": 85.8245,
+      "event_type": "Heavy Rainfall",
+      "description": "Heavy Rainfall",
+      "verification_score": 79,
+      "status": "Othentic",
+      "timestamp": "2026-08-25 13:05",
+      "id": "bhubaneswar_1791013025",
+      "created_at": "2026-10-03T07:37:05.678427",
+      "expires_at_timestamp": 1791617825.6784356
     }
-  ]
+  ],
+  "kanchrapara": []
 }

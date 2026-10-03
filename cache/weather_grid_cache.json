@@ -1,0 +1,16 @@
+{
+  "mumbai": {
+    "data": {
+      "city": "Mumbai",
+      "temperature": 29.5,
+      "max_temperature": 32.0,
+      "min_temperature": 27.0,
+      "rainfall": 45.0,
+      "max_rainfall": 80.0,
+      "min_rainfall": 10.0,
+      "cached_at": "2026-10-03T07:09:43.511687",
+      "expires_in_sec": 600
+    },
+    "expires_at": 1791011999.2205546
+  }
+}

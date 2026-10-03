@@ -1,42 +1,72 @@
 {
-  "pune_flooding_18.52_73.86": {
+  "chennai_heavy rainfall_13.08_80.27_2025-08-25": {
     "data": {
-      "report_id": 225,
-      "city": "Pune",
-      "state": "Maharashtra",
-      "latitude": 18.5204,
-      "longitude": 73.8567,
-      "event_type": "flooding",
-      "verification_status": "Underprocess",
-      "verification_score": 57.0,
+      "report_id": 544,
+      "city": "Chennai",
+      "state": "Tamil Nadu",
+      "latitude": 13.0827,
+      "longitude": 80.2707,
+      "event_type": "Heavy Rainfall",
+      "verification_status": "Fake",
+      "verification_score": 0.0,
+      "hint_breakdown": [
+        {
+          "signal": "Image & Media Forensics",
+          "weight": "FAIL",
+          "points": 0,
+          "passed": false,
+          "status": "AI-Generated synthetic media detected (Confidence: 100%) - Media filename indicates AI/synthetic origin ('ai'); Strong diffusion 8px latent grid fingerprint detected (spatial periodicity corr: 0.462); Unnaturally uniform compression error levels (ELA: 0.222) typical of diffusion generation; Synthetic diffusion spectral distribution (ratio: 1.98)"
+        }
+      ],
+      "is_ai_generated": true,
+      "ai_confidence": 1.0,
+      "ai_reason": "Media filename indicates AI/synthetic origin ('ai'); Strong diffusion 8px latent grid fingerprint detected (spatial periodicity corr: 0.462); Unnaturally uniform compression error levels (ELA: 0.222) typical of diffusion generation; Synthetic diffusion spectral distribution (ratio: 1.98)",
+      "penalty_action": "SOURCE [Facebook] @Surya allen BLOCKED & PLACED ON RED LIST (Repeated Misinformation / AI Synthetic Fake)",
+      "from_cache": false,
+      "from_database": false,
+      "verdict_summary": "Report REJECTED: Synthetic AI-generated weather visual."
+    },
+    "expires_at": 1791095733.501961,
+    "cached_at": "2026-10-03T06:35:33.501986"
+  },
+  "kolkata_thunderstorm_22.57_88.36_2026-09-07": {
+    "data": {
+      "report_id": 553,
+      "city": "Kolkata",
+      "state": "West Bengal",
+      "latitude": 22.5726,
+      "longitude": 88.3639,
+      "event_type": "Thunderstorm",
+      "verification_status": "Othentic",
+      "verification_score": 69.0,
       "hint_breakdown": [
         {
           "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "No active storm/flood conditions detected (Live station reports: Overcast Clouds, 0mm precip)"
+          "weight": "+14",
+          "points": 14,
+          "passed": true,
+          "status": "Windy Model & Archive: Historical date 2026-09-07 corroborated by 28 verified reports on 2026-09-07 (+14 pts)"
         },
         {
           "signal": "IMD Official Gov Bulletin",
           "weight": "+25",
           "points": 25,
           "passed": true,
-          "status": "Corroborated by IMD (Orange Alert: thunderstorm) — IMD State Meteorological Centre (Maharashtra)"
+          "status": "Corroborated by IMD (Orange Alert: thunderstorm) — IMD Regional Met Centre Bulletin"
         },
         {
           "signal": "Local Citizen Reports Cluster",
           "weight": "+20",
           "points": 20,
           "passed": true,
-          "status": "High cluster density (5 reports within 25km)"
+          "status": "High cluster density (65 reports within 25km)"
         },
         {
           "signal": "Account & Source Trust Evaluation",
-          "weight": "+2",
-          "points": 2,
-          "passed": true,
-          "status": "New Citizen Account (First Post Evaluation: +2 pts)"
+          "weight": "+0",
+          "points": 0,
+          "passed": false,
+          "status": "RED-LISTED Source (FaceBook: @Surya allen, Warnings: 4) - Disinformation History (0 pts)"
         },
         {
           "signal": "News Media Corroboration",
@@ -44,66 +74,6 @@
           "points": 10,
           "passed": true,
           "status": "Corroborated by Indian news feeds / GNews / NewsData"
-        }
-      ],
-      "is_ai_generated": false,
-      "ai_confidence": 0.0,
-      "ai_reason": null,
-      "user_trust_status": "GREY",
-      "trust_status": "GREY",
-      "source_trust_score": 50.0,
-      "verdict_summary": "AMBIGUOUS INCIDENT: Sent to Admin Panel review queue for manual forensic audit (Score 27-60).",
-      "from_cache": false,
-      "from_database": false
-    },
-    "expires_at": 1789163146.8254154,
-    "cached_at": "2026-09-10T21:45:46.825441"
-  },
-  "kolkata_thunderstorm_22.57_88.36": {
-    "data": {
-      "report_id": 379,
-      "city": "Kolkata",
-      "state": "West Bengal",
-      "latitude": 22.5726,
-      "longitude": 88.3639,
-      "event_type": "Thunderstorm",
-      "verification_status": "Underprocess",
-      "verification_score": 50.0,
-      "hint_breakdown": [
-        {
-          "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+5",
-          "points": 5,
-          "passed": true,
-          "status": "Baseline atmospheric telemetry recorded (Minimum baseline: +5 pts) — Live station reports: Overcast Clouds, 0mm precip"
-        },
-        {
-          "signal": "IMD Official Gov Bulletin",
-          "weight": "+25",
-          "points": 25,
-          "passed": true,
-          "status": "Corroborated by IMD (Orange Alert: thunderstorm) — IMD State Meteorological Centre (West Bengal)"
-        },
-        {
-          "signal": "Local Citizen Reports Cluster",
-          "weight": "+20",
-          "points": 20,
-          "passed": true,
-          "status": "High cluster density (11 reports within 25km)"
-        },
-        {
-          "signal": "Account & Source Trust Evaluation",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "RED-LISTED Source (X: @Surya_69696, Warnings: 11) - Disinformation History (0 pts)"
-        },
-        {
-          "signal": "News Media Corroboration",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "No corroborating press or broadcast alerts found"
         },
         {
           "signal": "Metadata Timestamp Verification",
@@ -114,65 +84,35 @@
         }
       ],
       "is_ai_generated": false,
-      "ai_confidence": 0.0,
-      "ai_reason": "Natural optical image characteristics verified",
+      "ai_confidence": 0.25,
+      "ai_reason": "Unnaturally uniform compression error levels (ELA: 0.342) typical of diffusion generation",
       "user_trust_status": "GREEN",
       "trust_status": "GREEN",
-      "source_trust_score": 97.4,
-      "verdict_summary": "AMBIGUOUS INCIDENT: Sent to Admin Panel review queue for manual forensic audit (Score 27-60).",
+      "source_trust_score": 98.4,
+      "verdict_summary": "VERIFIED TRUE WEATHER INCIDENT: Highly corroborated across atmospheric & official signals (Score > 60).",
       "from_cache": false,
       "from_database": false
     },
-    "expires_at": 1789168243.1135292,
-    "cached_at": "2026-09-10T23:10:43.113538"
+    "expires_at": 1791096436.5555806,
+    "cached_at": "2026-10-03T06:47:16.555587"
   },
-  "kolkata_heavy rainfall_22.57_88.36": {
+  "lucknow_thunderstorm_26.85_80.95_2026-09-07": {
     "data": {
-      "report_id": 505,
-      "city": "Kolkata",
-      "state": "West Bengal",
-      "latitude": 22.5726,
-      "longitude": 88.3639,
-      "event_type": "Heavy Rainfall",
-      "verification_status": "Fake",
-      "verification_score": 0.0,
-      "hint_breakdown": [
-        {
-          "signal": "Image & Media Forensics",
-          "weight": "FAIL",
-          "points": 0,
-          "passed": false,
-          "status": "AI-Generated synthetic media detected (Confidence: 100%) - Media filename indicates AI/synthetic origin ('ai'); Canonical AI generative resolution (1024x559) with no camera hardware tags; Hyper-vivid synthetic chroma distribution (90th percentile saturation: 205.0)"
-        }
-      ],
-      "is_ai_generated": true,
-      "ai_confidence": 1.0,
-      "ai_reason": "Media filename indicates AI/synthetic origin ('ai'); Canonical AI generative resolution (1024x559) with no camera hardware tags; Hyper-vivid synthetic chroma distribution (90th percentile saturation: 205.0)",
-      "penalty_action": "SOURCE [X] @Surya allen BLOCKED & PLACED ON RED LIST (Repeated Misinformation / AI Synthetic Fake)",
-      "from_cache": false,
-      "from_database": false,
-      "verdict_summary": "Report REJECTED: Synthetic AI-generated weather visual."
-    },
-    "expires_at": 1789192295.1576657,
-    "cached_at": "2026-09-11T05:51:35.157690"
-  },
-  "guwahati_heavy rainfall_26.14_91.74": {
-    "data": {
-      "report_id": 443,
-      "city": "Guwahati",
-      "state": "Assam",
-      "latitude": 26.1445,
-      "longitude": 91.7362,
-      "event_type": "Heavy Rainfall",
+      "report_id": 554,
+      "city": "Lucknow",
+      "state": "Uttar Pradesh",
+      "latitude": 26.8467,
+      "longitude": 80.9462,
+      "event_type": "Thunderstorm",
       "verification_status": "Underprocess",
-      "verification_score": 35.0,
+      "verification_score": 34.0,
       "hint_breakdown": [
         {
           "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+15",
-          "points": 15,
+          "weight": "+14",
+          "points": 14,
           "passed": true,
-          "status": "Corroborated by atmospheric signals (Windy Model)"
+          "status": "Windy Model & Archive: Historical date 2026-09-07 corroborated by 8 verified reports on 2026-09-07 (+14 pts)"
         },
         {
           "signal": "IMD Official Gov Bulletin",
@@ -186,14 +126,14 @@
           "weight": "+20",
           "points": 20,
           "passed": true,
-          "status": "High cluster density (20 reports within 25km)"
+          "status": "High cluster density (12 reports within 25km)"
         },
         {
           "signal": "Account & Source Trust Evaluation",
           "weight": "+0",
           "points": 0,
           "passed": false,
-          "status": "RED-LISTED Source (X: @Beast, Warnings: 12) - Disinformation History (0 pts)"
+          "status": "RED-LISTED Source (FaceBook: @Surya allen, Warnings: 4) - Disinformation History (0 pts)"
         },
         {
           "signal": "News Media Corroboration",
@@ -211,629 +151,26 @@
         }
       ],
       "is_ai_generated": false,
-      "ai_confidence": 0.3,
-      "ai_reason": "Hyper-vivid synthetic chroma distribution (90th percentile saturation: 255.0)",
+      "ai_confidence": 0.15,
+      "ai_reason": "Hyper-vivid synthetic chroma distribution (90th percentile saturation: 250.0)",
       "user_trust_status": "GREEN",
       "trust_status": "GREEN",
-      "source_trust_score": 100.0,
+      "source_trust_score": 98.4,
       "verdict_summary": "AMBIGUOUS INCIDENT: Sent to Admin Panel review queue for manual forensic audit (Score 27-60).",
       "from_cache": false,
       "from_database": false
     },
-    "expires_at": 1789170195.398446,
-    "cached_at": "2026-09-10T23:43:15.398465"
+    "expires_at": 1791096484.4943452,
+    "cached_at": "2026-10-03T06:48:04.494356"
   },
-  "bengaluru_heavy rainfall_12.97_77.59": {
+  "mumbai_earthquake_19.08_72.88_2026-08-07": {
     "data": {
-      "report_id": 503,
-      "city": "Bengaluru",
-      "state": "Karnataka",
-      "latitude": 12.9716,
-      "longitude": 77.5946,
-      "event_type": "Heavy Rainfall",
-      "verification_status": "Underprocess",
-      "verification_score": 50.0,
-      "hint_breakdown": [
-        {
-          "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+15",
-          "points": 15,
-          "passed": true,
-          "status": "Corroborated by atmospheric signals (Windy Model)"
-        },
-        {
-          "signal": "IMD Official Gov Bulletin",
-          "weight": "+25",
-          "points": 25,
-          "passed": true,
-          "status": "Corroborated by IMD (Yellow Alert: thunderstorm) — IMD Regional Met Centre Bulletin"
-        },
-        {
-          "signal": "Local Citizen Reports Cluster",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "Low cluster density (0 reports within 25km)"
-        },
-        {
-          "signal": "Account & Source Trust Evaluation",
-          "weight": "+10",
-          "points": 10,
-          "passed": true,
-          "status": "Active Contributor Source (X: @Surya allen, Standard Baseline: +10 pts)"
-        },
-        {
-          "signal": "News Media Corroboration",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "No corroborating press or broadcast alerts found"
-        },
-        {
-          "signal": "Metadata Timestamp Verification",
-          "weight": "DIAGNOSTIC",
-          "points": 0,
-          "passed": true,
-          "status": "No embedded EXIF timestamp found (metadata was stripped or not present)."
-        }
-      ],
-      "is_ai_generated": false,
-      "ai_confidence": 0.25,
-      "ai_reason": "Unnaturally uniform compression error levels (ELA: 0.313) typical of diffusion generation",
-      "user_trust_status": "GREEN",
-      "trust_status": "GREEN",
-      "source_trust_score": 98.0,
-      "verdict_summary": "AMBIGUOUS INCIDENT: Sent to Admin Panel review queue for manual forensic audit (Score 27-60).",
-      "from_cache": false,
-      "from_database": false
-    },
-    "expires_at": 1789191453.8212028,
-    "cached_at": "2026-09-11T05:37:33.821230"
-  },
-  "patna_heavy rainfall_25.59_85.14": {
-    "data": {
-      "report_id": 452,
-      "city": "Patna",
-      "state": "Bihar",
-      "latitude": 25.5941,
-      "longitude": 85.1376,
-      "event_type": "Heavy Rainfall",
-      "verification_status": "Underprocess",
-      "verification_score": 50.0,
-      "hint_breakdown": [
-        {
-          "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+5",
-          "points": 5,
-          "passed": true,
-          "status": "Baseline atmospheric telemetry recorded (Minimum baseline: +5 pts) — Live station reports: Broken Clouds, 0mm precip"
-        },
-        {
-          "signal": "IMD Official Gov Bulletin",
-          "weight": "+25",
-          "points": 25,
-          "passed": true,
-          "status": "Corroborated by IMD (Orange Alert: thunderstorm) — IMD State Meteorological Centre (Bihar)"
-        },
-        {
-          "signal": "Local Citizen Reports Cluster",
-          "weight": "+20",
-          "points": 20,
-          "passed": true,
-          "status": "High cluster density (50 reports within 25km)"
-        },
-        {
-          "signal": "Account & Source Trust Evaluation",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "RED-LISTED Source (X: @Ram Biswas, Warnings: 10) - Disinformation History (0 pts)"
-        },
-        {
-          "signal": "News Media Corroboration",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "No corroborating press or broadcast alerts found"
-        },
-        {
-          "signal": "Metadata Timestamp Verification",
-          "weight": "DIAGNOSTIC",
-          "points": 0,
-          "passed": true,
-          "status": "No embedded EXIF timestamp found (metadata was stripped or not present)."
-        }
-      ],
-      "is_ai_generated": false,
-      "ai_confidence": 0.0,
-      "ai_reason": "Video container verification passed",
-      "user_trust_status": "GREEN",
-      "trust_status": "GREEN",
-      "source_trust_score": 98.6,
-      "verdict_summary": "AMBIGUOUS INCIDENT: Sent to Admin Panel review queue for manual forensic audit (Score 27-60).",
-      "from_cache": false,
-      "from_database": false
-    },
-    "expires_at": 1789170388.0686412,
-    "cached_at": "2026-09-10T23:46:28.068664"
-  },
-  "delhi_heavy rainfall_28.61_77.21": {
-    "data": {
-      "report_id": 475,
-      "city": "Delhi",
-      "state": "Delhi",
-      "latitude": 28.6139,
-      "longitude": 77.209,
-      "event_type": "Heavy Rainfall",
-      "verification_status": "Fake",
-      "verification_score": 15.0,
-      "hint_breakdown": [
-        {
-          "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+5",
-          "points": 5,
-          "passed": true,
-          "status": "Baseline atmospheric telemetry recorded (Minimum baseline: +5 pts) — Live station reports: Broken Clouds, 0mm precip"
-        },
-        {
-          "signal": "IMD Official Gov Bulletin",
-          "weight": "-10",
-          "points": -10,
-          "passed": false,
-          "status": "No matching active IMD warning bulletin for district"
-        },
-        {
-          "signal": "Local Citizen Reports Cluster",
-          "weight": "+20",
-          "points": 20,
-          "passed": true,
-          "status": "High cluster density (52 reports within 25km)"
-        },
-        {
-          "signal": "Account & Source Trust Evaluation",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "RED-LISTED Source (Instagram: @Surya_69696, Warnings: 4) - Disinformation History (0 pts)"
-        },
-        {
-          "signal": "News Media Corroboration",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "No corroborating press or broadcast alerts found"
-        },
-        {
-          "signal": "Metadata Timestamp Verification",
-          "weight": "DIAGNOSTIC",
-          "points": 0,
-          "passed": true,
-          "status": "No embedded EXIF timestamp found (metadata was stripped or not present)."
-        }
-      ],
-      "is_ai_generated": false,
-      "ai_confidence": 0.0,
-      "ai_reason": "Natural optical image characteristics verified",
-      "user_trust_status": "GREEN",
-      "trust_status": "GREEN",
-      "source_trust_score": 97.9,
-      "verdict_summary": "UNVERIFIED / FALSE REPORT: Contradicted by meteorological observations and lacking corroboration (Score < 27).",
-      "from_cache": false,
-      "from_database": false
-    },
-    "expires_at": 1789170842.6743457,
-    "cached_at": "2026-09-10T23:54:02.674363"
-  },
-  "guwahati_flood_26.14_91.74": {
-    "data": {
-      "report_id": 266,
-      "city": "Guwahati",
-      "state": "Assam",
-      "latitude": 26.1445,
-      "longitude": 91.7362,
-      "event_type": "Flood",
-      "verification_status": "Othentic",
-      "verification_score": 70.0,
-      "hint_breakdown": [
-        {
-          "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+15",
-          "points": 15,
-          "passed": true,
-          "status": "Corroborated by atmospheric signals (Windy Model, OpenWeather: Light Rain)"
-        },
-        {
-          "signal": "IMD Official Gov Bulletin",
-          "weight": "+25",
-          "points": 25,
-          "passed": true,
-          "status": "Corroborated by IMD (Yellow Alert: fog) — IMD Regional Met Centre Bulletin"
-        },
-        {
-          "signal": "Local Citizen Reports Cluster",
-          "weight": "+20",
-          "points": 20,
-          "passed": true,
-          "status": "High cluster density (20 reports within 25km)"
-        },
-        {
-          "signal": "Account & Source Trust Evaluation",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "RED-LISTED Source (facebook: @Ram Biswas, Warnings: 4) - Disinformation History"
-        },
-        {
-          "signal": "News Media Corroboration",
-          "weight": "+10",
-          "points": 10,
-          "passed": true,
-          "status": "Corroborated by Indian news feeds / GNews / NewsData"
-        },
-        {
-          "signal": "Metadata Timestamp Verification",
-          "weight": "DIAGNOSTIC",
-          "points": 0,
-          "passed": true,
-          "status": "No embedded EXIF timestamp found (metadata was stripped or not present)."
-        }
-      ],
-      "is_ai_generated": false,
-      "ai_confidence": 0.25,
-      "ai_reason": "Synthetic diffusion spectral distribution (ratio: 2.25)",
-      "user_trust_status": "GREEN",
-      "trust_status": "GREEN",
-      "source_trust_score": 97.1,
-      "verdict_summary": "VERIFIED TRUE WEATHER INCIDENT: Highly corroborated across atmospheric & official signals (Score > 60).",
-      "from_cache": false,
-      "from_database": false
-    },
-    "expires_at": 1789164910.2273035,
-    "cached_at": "2026-09-10T22:15:10.227329"
-  },
-  "delhi_thunderstorm_28.61_77.21": {
-    "data": {
-      "report_id": 378,
-      "city": "Delhi",
-      "state": "Delhi",
-      "latitude": 28.6139,
-      "longitude": 77.209,
-      "event_type": "Thunderstorm",
-      "verification_status": "Fake",
-      "verification_score": 15.0,
-      "hint_breakdown": [
-        {
-          "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+5",
-          "points": 5,
-          "passed": true,
-          "status": "Baseline atmospheric telemetry recorded (Minimum baseline: +5 pts) — Live station reports: Broken Clouds, 0mm precip"
-        },
-        {
-          "signal": "IMD Official Gov Bulletin",
-          "weight": "-10",
-          "points": -10,
-          "passed": false,
-          "status": "No matching active IMD warning bulletin for district"
-        },
-        {
-          "signal": "Local Citizen Reports Cluster",
-          "weight": "+20",
-          "points": 20,
-          "passed": true,
-          "status": "High cluster density (7 reports within 25km)"
-        },
-        {
-          "signal": "Account & Source Trust Evaluation",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "RED-LISTED Source (X: @Surya_69696, Warnings: 10) - Disinformation History (0 pts)"
-        },
-        {
-          "signal": "News Media Corroboration",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "No corroborating press or broadcast alerts found"
-        },
-        {
-          "signal": "Metadata Timestamp Verification",
-          "weight": "DIAGNOSTIC",
-          "points": 0,
-          "passed": true,
-          "status": "No embedded EXIF timestamp found (metadata was stripped or not present)."
-        }
-      ],
-      "is_ai_generated": false,
-      "ai_confidence": 0.0,
-      "ai_reason": "Natural optical image characteristics verified",
-      "user_trust_status": "GREEN",
-      "trust_status": "GREEN",
-      "source_trust_score": 97.3,
-      "verdict_summary": "UNVERIFIED / FALSE REPORT: Contradicted by meteorological observations and lacking corroboration (Score < 27).",
-      "from_cache": false,
-      "from_database": false
-    },
-    "expires_at": 1789168237.851234,
-    "cached_at": "2026-09-10T23:10:37.851246"
-  },
-  "chennai_heavy rainfall_13.08_80.27": {
-    "data": {
-      "report_id": 504,
-      "city": "Chennai",
-      "state": "Tamil Nadu",
-      "latitude": 13.0827,
-      "longitude": 80.2707,
-      "event_type": "Heavy Rainfall",
-      "verification_status": "Underprocess",
-      "verification_score": 60.0,
-      "hint_breakdown": [
-        {
-          "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+15",
-          "points": 15,
-          "passed": true,
-          "status": "Corroborated by atmospheric signals (Windy Model)"
-        },
-        {
-          "signal": "IMD Official Gov Bulletin",
-          "weight": "+25",
-          "points": 25,
-          "passed": true,
-          "status": "Corroborated by IMD (Yellow Alert: rainfall) — IMD Regional Met Centre Bulletin"
-        },
-        {
-          "signal": "Local Citizen Reports Cluster",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "Low cluster density (3 reports within 25km)"
-        },
-        {
-          "signal": "Account & Source Trust Evaluation",
-          "weight": "+10",
-          "points": 10,
-          "passed": true,
-          "status": "Active Contributor Source (X: @Surya allen, Standard Baseline: +10 pts)"
-        },
-        {
-          "signal": "News Media Corroboration",
-          "weight": "+10",
-          "points": 10,
-          "passed": true,
-          "status": "Corroborated by Indian news feeds / GNews / NewsData"
-        },
-        {
-          "signal": "Metadata Timestamp Verification",
-          "weight": "DIAGNOSTIC",
-          "points": 0,
-          "passed": true,
-          "status": "No embedded EXIF timestamp found (metadata was stripped or not present)."
-        }
-      ],
-      "is_ai_generated": false,
-      "ai_confidence": 0.0,
-      "ai_reason": "Canonical AI generative resolution (1024x559) with no camera hardware tags; Natural optical texture and sensor shot noise verified (ELA: 2.315)",
-      "user_trust_status": "GREEN",
-      "trust_status": "GREEN",
-      "source_trust_score": 98.0,
-      "verdict_summary": "AMBIGUOUS INCIDENT: Sent to Admin Panel review queue for manual forensic audit (Score 27-60).",
-      "from_cache": false,
-      "from_database": false
-    },
-    "expires_at": 1789192044.1484807,
-    "cached_at": "2026-09-11T05:47:24.148506"
-  },
-  "chennai_earthquake_13.08_80.27": {
-    "data": {
-      "report_id": 298,
-      "city": "Chennai",
-      "state": "Tamil Nadu",
-      "latitude": 13.0827,
-      "longitude": 80.2707,
-      "event_type": "earthquake",
-      "verification_status": "Fake",
-      "verification_score": -20.0,
-      "hint_breakdown": [
-        {
-          "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "Inapplicable: Atmospheric weather models do not measure seismic tectonic tremors."
-        },
-        {
-          "signal": "IMD Official Gov Bulletin",
-          "weight": "-20",
-          "points": -20,
-          "passed": false,
-          "status": "Contradicted by National Center for Seismology (IMD-MoES Official Seismic Network): CONTRADICTED: No earthquake or seismic tremor recorded by the National Center for Seismology (IMD-MoES) in Chennai, Tamil Nadu."
-        },
-        {
-          "signal": "Local Citizen Reports Cluster",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "Low cluster density (0 reports within 25km)"
-        },
-        {
-          "signal": "Account & Source Trust Evaluation",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "Flagged / Low-Trust Source (X: @Beast, Warnings: 1)"
-        },
-        {
-          "signal": "News Media Corroboration",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "No corroborating press or broadcast alerts found"
-        },
-        {
-          "signal": "Metadata Timestamp Verification",
-          "weight": "DIAGNOSTIC",
-          "points": 0,
-          "passed": true,
-          "status": "No embedded EXIF timestamp found (metadata was stripped or not present)."
-        }
-      ],
-      "is_ai_generated": false,
-      "ai_confidence": 0.0,
-      "ai_reason": "Natural optical image characteristics verified",
-      "user_trust_status": "GREEN",
-      "trust_status": "GREEN",
-      "source_trust_score": 100.0,
-      "verdict_summary": "UNVERIFIED / FALSE REPORT: Contradicted by meteorological observations and lacking corroboration (Score < 27).",
-      "from_cache": false,
-      "from_database": false
-    },
-    "expires_at": 1789166064.7113104,
-    "cached_at": "2026-09-10T22:34:24.711318"
-  },
-  "kolkata_cyclone_22.57_88.36": {
-    "data": {
-      "report_id": 346,
-      "city": "Kolkata",
-      "state": "West Bengal",
-      "latitude": 22.5726,
-      "longitude": 88.3639,
-      "event_type": "Cyclone",
-      "verification_status": "Underprocess",
-      "verification_score": 60.0,
-      "hint_breakdown": [
-        {
-          "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+5",
-          "points": 5,
-          "passed": true,
-          "status": "Baseline atmospheric telemetry recorded (Minimum baseline: +5 pts) — Live station reports: Overcast Clouds, 0mm precip"
-        },
-        {
-          "signal": "IMD Official Gov Bulletin",
-          "weight": "+25",
-          "points": 25,
-          "passed": true,
-          "status": "Corroborated by IMD (Orange Alert: thunderstorm) — IMD State Meteorological Centre (West Bengal)"
-        },
-        {
-          "signal": "Local Citizen Reports Cluster",
-          "weight": "+20",
-          "points": 20,
-          "passed": true,
-          "status": "High cluster density (6 reports within 25km)"
-        },
-        {
-          "signal": "Account & Source Trust Evaluation",
-          "weight": "+10",
-          "points": 10,
-          "passed": true,
-          "status": "Active Contributor Source (X: @Ram_45, Standard Baseline: +10 pts)"
-        },
-        {
-          "signal": "News Media Corroboration",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "No corroborating press or broadcast alerts found"
-        },
-        {
-          "signal": "Metadata Timestamp Verification",
-          "weight": "DIAGNOSTIC",
-          "points": 0,
-          "passed": true,
-          "status": "No embedded EXIF timestamp found (metadata was stripped or not present)."
-        }
-      ],
-      "is_ai_generated": false,
-      "ai_confidence": 0.0,
-      "ai_reason": "Natural optical image characteristics verified",
-      "user_trust_status": "GREEN",
-      "trust_status": "GREEN",
-      "source_trust_score": 98.2,
-      "verdict_summary": "AMBIGUOUS INCIDENT: Sent to Admin Panel review queue for manual forensic audit (Score 27-60).",
-      "from_cache": false,
-      "from_database": false
-    },
-    "expires_at": 1789167714.283859,
-    "cached_at": "2026-09-10T23:01:54.283874"
-  },
-  "ahmedabad_thunderstorm_23.02_72.57": {
-    "data": {
-      "report_id": 339,
-      "city": "Ahmedabad",
-      "state": "Gujarat",
-      "latitude": 23.0225,
-      "longitude": 72.5714,
-      "event_type": "Thunderstorm",
-      "verification_status": "Underprocess",
-      "verification_score": 40.0,
-      "hint_breakdown": [
-        {
-          "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+5",
-          "points": 5,
-          "passed": true,
-          "status": "Baseline atmospheric telemetry recorded (Minimum baseline: +5 pts) — Live station reports: Overcast Clouds, 0mm precip"
-        },
-        {
-          "signal": "IMD Official Gov Bulletin",
-          "weight": "+25",
-          "points": 25,
-          "passed": true,
-          "status": "Corroborated by IMD (Yellow Alert: rainfall) — IMD Regional Met Centre Bulletin"
-        },
-        {
-          "signal": "Local Citizen Reports Cluster",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "Low cluster density (0 reports within 25km)"
-        },
-        {
-          "signal": "Account & Source Trust Evaluation",
-          "weight": "+10",
-          "points": 10,
-          "passed": true,
-          "status": "Active Contributor Source (X: @Surya_12549, Standard Baseline: +10 pts)"
-        },
-        {
-          "signal": "News Media Corroboration",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "No corroborating press or broadcast alerts found"
-        },
-        {
-          "signal": "Metadata Timestamp Verification",
-          "weight": "DIAGNOSTIC",
-          "points": 0,
-          "passed": true,
-          "status": "No embedded EXIF timestamp found (metadata was stripped or not present)."
-        }
-      ],
-      "is_ai_generated": false,
-      "ai_confidence": 0.0,
-      "ai_reason": "Natural optical image characteristics verified",
-      "user_trust_status": "GREEN",
-      "trust_status": "GREEN",
-      "source_trust_score": 96.9,
-      "verdict_summary": "AMBIGUOUS INCIDENT: Sent to Admin Panel review queue for manual forensic audit (Score 27-60).",
-      "from_cache": false,
-      "from_database": false
-    },
-    "expires_at": 1789167592.5680423,
-    "cached_at": "2026-09-10T22:59:52.568058"
-  },
-  "delhi_cyclone_28.61_77.21": {
-    "data": {
-      "report_id": 485,
-      "city": "Delhi",
-      "state": "Delhi",
-      "latitude": 28.6139,
-      "longitude": 77.209,
-      "event_type": "Cyclone",
+      "report_id": 555,
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "latitude": 19.076,
+      "longitude": 72.8777,
+      "event_type": "Earthquake",
       "verification_status": "Fake",
       "verification_score": 0.0,
       "hint_breakdown": [
@@ -848,88 +185,21 @@
       "is_ai_generated": true,
       "ai_confidence": 0.85,
       "ai_reason": "Media filename contains 'fake' marker",
-      "penalty_action": "SOURCE [Instagram] @Surya_69696 BLOCKED & PLACED ON RED LIST (Repeated Misinformation / AI Synthetic Fake)",
+      "penalty_action": "SOURCE [Facebook] @Surya allen BLOCKED & PLACED ON RED LIST (Repeated Misinformation / AI Synthetic Fake)",
       "from_cache": false,
       "from_database": false,
       "verdict_summary": "Report REJECTED: Synthetic AI-generated weather visual."
     },
-    "expires_at": 1789170887.0296035,
-    "cached_at": "2026-09-10T23:54:47.029616"
+    "expires_at": 1791096721.9081252,
+    "cached_at": "2026-10-03T06:52:01.908163"
   },
-  "delhi_heavy snowfall_28.61_77.21": {
+  "kolkata_flood_22.57_88.36": {
     "data": {
-      "report_id": 342,
-      "city": "Delhi",
-      "state": "Delhi",
-      "latitude": 28.6139,
-      "longitude": 77.209,
-      "event_type": "Heavy Snowfall",
-      "verification_status": "Underprocess",
-      "verification_score": 45.0,
-      "hint_breakdown": [
-        {
-          "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+15",
-          "points": 15,
-          "passed": true,
-          "status": "Corroborated by atmospheric signals (Windy Model)"
-        },
-        {
-          "signal": "IMD Official Gov Bulletin",
-          "weight": "+0",
-          "points": 0,
-          "passed": true,
-          "status": "Standard meteorological conditions (IMD Station Network clear, atmospheric signals active)"
-        },
-        {
-          "signal": "Local Citizen Reports Cluster",
-          "weight": "+20",
-          "points": 20,
-          "passed": true,
-          "status": "High cluster density (38 reports within 25km)"
-        },
-        {
-          "signal": "Account & Source Trust Evaluation",
-          "weight": "+10",
-          "points": 10,
-          "passed": true,
-          "status": "Active Contributor Source (Instagram: @Surya_1256974, Standard Baseline: +10 pts)"
-        },
-        {
-          "signal": "News Media Corroboration",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "No corroborating press or broadcast alerts found"
-        },
-        {
-          "signal": "Metadata Timestamp Verification",
-          "weight": "DIAGNOSTIC",
-          "points": 0,
-          "passed": true,
-          "status": "No embedded EXIF timestamp found (metadata was stripped or not present)."
-        }
-      ],
-      "is_ai_generated": false,
-      "ai_confidence": 0.0,
-      "ai_reason": "Natural optical image characteristics verified",
-      "user_trust_status": "GREEN",
-      "trust_status": "GREEN",
-      "source_trust_score": 97.0,
-      "verdict_summary": "AMBIGUOUS INCIDENT: Sent to Admin Panel review queue for manual forensic audit (Score 27-60).",
-      "from_cache": false,
-      "from_database": false
-    },
-    "expires_at": 1789167651.5348666,
-    "cached_at": "2026-09-10T23:00:51.534880"
-  },
-  "hyderabad_flood_17.39_78.49": {
-    "data": {
-      "report_id": 347,
-      "city": "Hyderabad",
-      "state": "Telangana",
-      "latitude": 17.385,
-      "longitude": 78.4867,
+      "report_id": 556,
+      "city": "Kolkata",
+      "state": "West Bengal",
+      "latitude": 22.57,
+      "longitude": 88.36,
       "event_type": "Flood",
       "verification_status": "Fake",
       "verification_score": 0.0,
@@ -939,199 +209,72 @@
           "weight": "FAIL",
           "points": 0,
           "passed": false,
-          "status": "AI-Generated synthetic media detected (Confidence: 65%) - Media filename indicates AI/synthetic origin (fake)"
+          "status": "AI-Generated synthetic media detected (Confidence: 100%) - Video filename indicates AI/synthetic origin ('ai'); Canonical AI generative video resolution (768x1344); Hyper-saturated synthetic chroma distribution in video frames (196.0); Absence of physical camera hardware EXIF tags in video stream"
         }
       ],
       "is_ai_generated": true,
-      "ai_confidence": 0.65,
-      "ai_reason": "Media filename indicates AI/synthetic origin (fake)",
-      "penalty_action": "Warning issued; source placed on GREY monitoring list.",
+      "ai_confidence": 1.0,
+      "ai_reason": "Video filename indicates AI/synthetic origin ('ai'); Canonical AI generative video resolution (768x1344); Hyper-saturated synthetic chroma distribution in video frames (196.0); Absence of physical camera hardware EXIF tags in video stream",
+      "penalty_action": "Disinformation flagged; unverified / synthetic media rejected.",
       "from_cache": false,
       "from_database": false,
       "verdict_summary": "Report REJECTED: Synthetic AI-generated weather visual."
     },
-    "expires_at": 1789167714.4028473,
-    "cached_at": "2026-09-10T23:01:54.402862"
+    "expires_at": 1791096838.1540387,
+    "cached_at": "2026-10-03T06:53:58.154079"
   },
-  "kolkata_heavy snowfall_22.57_88.36": {
+  "test_city_flood_20.0_78.0": {
     "data": {
-      "report_id": 368,
-      "city": "Kolkata",
-      "state": "West Bengal",
-      "latitude": 22.5726,
-      "longitude": 88.3639,
-      "event_type": "Heavy Snowfall",
-      "verification_status": "Fake",
-      "verification_score": 15.0,
-      "hint_breakdown": [
-        {
-          "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+5",
-          "points": 5,
-          "passed": true,
-          "status": "Baseline atmospheric telemetry recorded (Minimum baseline: +5 pts) — Live station reports: Overcast Clouds, 0mm precip"
-        },
-        {
-          "signal": "IMD Official Gov Bulletin",
-          "weight": "-10",
-          "points": -10,
-          "passed": false,
-          "status": "No matching active IMD warning bulletin for district"
-        },
-        {
-          "signal": "Local Citizen Reports Cluster",
-          "weight": "+20",
-          "points": 20,
-          "passed": true,
-          "status": "High cluster density (118 reports within 25km)"
-        },
-        {
-          "signal": "Account & Source Trust Evaluation",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "RED-LISTED Source (X: @Surya_69696, Warnings: 5) - Disinformation History (0 pts)"
-        },
-        {
-          "signal": "News Media Corroboration",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "No corroborating press or broadcast alerts found"
-        },
-        {
-          "signal": "Metadata Timestamp Verification",
-          "weight": "DIAGNOSTIC",
-          "points": 0,
-          "passed": true,
-          "status": "No embedded EXIF timestamp found (metadata was stripped or not present)."
-        }
-      ],
-      "is_ai_generated": false,
-      "ai_confidence": 0.0,
-      "ai_reason": "Natural optical image characteristics verified",
-      "user_trust_status": "GREEN",
-      "trust_status": "GREEN",
-      "source_trust_score": 97.1,
-      "verdict_summary": "UNVERIFIED / FALSE REPORT: Contradicted by meteorological observations and lacking corroboration (Score < 27).",
-      "from_cache": false,
-      "from_database": false
+      "cached_verdict": "Othentic"
     },
-    "expires_at": 1789168134.8210611,
-    "cached_at": "2026-09-10T23:08:54.821071"
+    "expires_at": 1791096892.000193,
+    "cached_at": "2026-10-03T06:54:52.000201"
   },
-  "kolkata_heatwave_22.57_88.36": {
+  "delhi_flooding_28.61_77.21": {
     "data": {
-      "report_id": 369,
-      "city": "Kolkata",
-      "state": "West Bengal",
-      "latitude": 22.5726,
-      "longitude": 88.3639,
-      "event_type": "Heatwave",
-      "verification_status": "Fake",
-      "verification_score": 15.0,
-      "hint_breakdown": [
-        {
-          "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+5",
-          "points": 5,
-          "passed": true,
-          "status": "Baseline atmospheric telemetry recorded (Minimum baseline: +5 pts) — Live station reports: Overcast Clouds, 0mm precip"
-        },
-        {
-          "signal": "IMD Official Gov Bulletin",
-          "weight": "-10",
-          "points": -10,
-          "passed": false,
-          "status": "No matching active IMD warning bulletin for district"
-        },
-        {
-          "signal": "Local Citizen Reports Cluster",
-          "weight": "+20",
-          "points": 20,
-          "passed": true,
-          "status": "High cluster density (128 reports within 25km)"
-        },
-        {
-          "signal": "Account & Source Trust Evaluation",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "RED-LISTED Source (X: @Surya_69696, Warnings: 6) - Disinformation History (0 pts)"
-        },
-        {
-          "signal": "News Media Corroboration",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "No corroborating press or broadcast alerts found"
-        },
-        {
-          "signal": "Metadata Timestamp Verification",
-          "weight": "DIAGNOSTIC",
-          "points": 0,
-          "passed": true,
-          "status": "No embedded EXIF timestamp found (metadata was stripped or not present)."
-        }
-      ],
-      "is_ai_generated": false,
-      "ai_confidence": 0.0,
-      "ai_reason": "Natural optical image characteristics verified",
-      "user_trust_status": "GREEN",
-      "trust_status": "GREEN",
-      "source_trust_score": 97.1,
-      "verdict_summary": "UNVERIFIED / FALSE REPORT: Contradicted by meteorological observations and lacking corroboration (Score < 27).",
-      "from_cache": false,
-      "from_database": false
-    },
-    "expires_at": 1789168148.3464913,
-    "cached_at": "2026-09-10T23:09:08.346503"
-  },
-  "kolkata_flood_22.57_88.36": {
-    "data": {
-      "report_id": 370,
-      "city": "Kolkata",
-      "state": "West Bengal",
-      "latitude": 22.5726,
-      "longitude": 88.3639,
-      "event_type": "Flood",
+      "report_id": 557,
+      "city": "Delhi",
+      "state": "Delhi",
+      "latitude": 28.6139,
+      "longitude": 77.209,
+      "event_type": "flooding",
       "verification_status": "Underprocess",
-      "verification_score": 50.0,
+      "verification_score": 27.0,
       "hint_breakdown": [
         {
           "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
           "weight": "+5",
           "points": 5,
-          "passed": true,
-          "status": "Baseline atmospheric telemetry recorded (Minimum baseline: +5 pts) — Live station reports: Overcast Clouds, 0mm precip"
+          "passed": false,
+          "status": "Windy Model Telemetry: 0.0mm rain, 13.4 km/h wind, 31.5°C, 31.7% RH — Dry / calm conditions on Windy model (no rain signal) (+5 pts)"
         },
         {
           "signal": "IMD Official Gov Bulletin",
-          "weight": "+25",
-          "points": 25,
-          "passed": true,
-          "status": "Corroborated by IMD (Orange Alert: thunderstorm) — IMD State Meteorological Centre (West Bengal)"
+          "weight": "-10",
+          "points": -10,
+          "passed": false,
+          "status": "No matching active IMD warning bulletin for district"
         },
         {
           "signal": "Local Citizen Reports Cluster",
           "weight": "+20",
           "points": 20,
           "passed": true,
-          "status": "High cluster density (115 reports within 25km)"
+          "status": "High cluster density (6 reports within 25km)"
         },
         {
           "signal": "Account & Source Trust Evaluation",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "RED-LISTED Source (X: @Surya_69696, Warnings: 7) - Disinformation History (0 pts)"
+          "weight": "+2",
+          "points": 2,
+          "passed": true,
+          "status": "New Citizen Account (First Post: +2 pts)"
         },
         {
           "signal": "News Media Corroboration",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "No corroborating press or broadcast alerts found"
+          "weight": "+10",
+          "points": 10,
+          "passed": true,
+          "status": "Corroborated by Indian news feeds / GNews / NewsData"
         },
         {
           "signal": "Metadata Timestamp Verification",
@@ -1144,479 +287,84 @@
       "is_ai_generated": false,
       "ai_confidence": 0.0,
       "ai_reason": "Natural optical image characteristics verified",
-      "user_trust_status": "GREEN",
-      "trust_status": "GREEN",
-      "source_trust_score": 97.3,
+      "user_trust_status": "GREY",
+      "trust_status": "GREY",
+      "source_trust_score": 50.0,
       "verdict_summary": "AMBIGUOUS INCIDENT: Sent to Admin Panel review queue for manual forensic audit (Score 27-60).",
       "from_cache": false,
       "from_database": false
     },
-    "expires_at": 1789168157.8302667,
-    "cached_at": "2026-09-10T23:09:17.830284"
+    "expires_at": 1791096894.2745032,
+    "cached_at": "2026-10-03T06:54:54.274515"
   },
-  "kolkata_fog_22.57_88.36": {
+  "mumbai_flood_19.08_72.88_2026-08-07": {
     "data": {
-      "report_id": 371,
-      "city": "Kolkata",
-      "state": "West Bengal",
-      "latitude": 22.5726,
-      "longitude": 88.3639,
-      "event_type": "Fog",
-      "verification_status": "Fake",
-      "verification_score": 15.0,
-      "hint_breakdown": [
-        {
-          "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+5",
-          "points": 5,
-          "passed": true,
-          "status": "Baseline atmospheric telemetry recorded (Minimum baseline: +5 pts) — Live station reports: Overcast Clouds, 0mm precip"
-        },
-        {
-          "signal": "IMD Official Gov Bulletin",
-          "weight": "-10",
-          "points": -10,
-          "passed": false,
-          "status": "No matching active IMD warning bulletin for district"
-        },
-        {
-          "signal": "Local Citizen Reports Cluster",
-          "weight": "+20",
-          "points": 20,
-          "passed": true,
-          "status": "High cluster density (130 reports within 25km)"
-        },
-        {
-          "signal": "Account & Source Trust Evaluation",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "RED-LISTED Source (X: @Surya_69696, Warnings: 7) - Disinformation History (0 pts)"
-        },
-        {
-          "signal": "News Media Corroboration",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "No corroborating press or broadcast alerts found"
-        },
-        {
-          "signal": "Metadata Timestamp Verification",
-          "weight": "DIAGNOSTIC",
-          "points": 0,
-          "passed": true,
-          "status": "No embedded EXIF timestamp found (metadata was stripped or not present)."
-        }
-      ],
-      "is_ai_generated": false,
-      "ai_confidence": 0.0,
-      "ai_reason": "Natural optical image characteristics verified",
-      "user_trust_status": "GREEN",
-      "trust_status": "GREEN",
-      "source_trust_score": 97.3,
-      "verdict_summary": "UNVERIFIED / FALSE REPORT: Contradicted by meteorological observations and lacking corroboration (Score < 27).",
-      "from_cache": false,
-      "from_database": false
-    },
-    "expires_at": 1789168170.462389,
-    "cached_at": "2026-09-10T23:09:30.462400"
-  },
-  "delhi_fog_28.61_77.21": {
-    "data": {
-      "report_id": 373,
-      "city": "Delhi",
-      "state": "Delhi",
-      "latitude": 28.6139,
-      "longitude": 77.209,
-      "event_type": "Fog",
-      "verification_status": "Fake",
-      "verification_score": 15.0,
-      "hint_breakdown": [
-        {
-          "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+5",
-          "points": 5,
-          "passed": true,
-          "status": "Baseline atmospheric telemetry recorded (Minimum baseline: +5 pts) — Live station reports: Broken Clouds, 0mm precip"
-        },
-        {
-          "signal": "IMD Official Gov Bulletin",
-          "weight": "-10",
-          "points": -10,
-          "passed": false,
-          "status": "No matching active IMD warning bulletin for district"
-        },
-        {
-          "signal": "Local Citizen Reports Cluster",
-          "weight": "+20",
-          "points": 20,
-          "passed": true,
-          "status": "High cluster density (45 reports within 25km)"
-        },
-        {
-          "signal": "Account & Source Trust Evaluation",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "RED-LISTED Source (X: @Surya_69696, Warnings: 8) - Disinformation History (0 pts)"
-        },
-        {
-          "signal": "News Media Corroboration",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "No corroborating press or broadcast alerts found"
-        },
-        {
-          "signal": "Metadata Timestamp Verification",
-          "weight": "DIAGNOSTIC",
-          "points": 0,
-          "passed": true,
-          "status": "No embedded EXIF timestamp found (metadata was stripped or not present)."
-        }
-      ],
-      "is_ai_generated": false,
-      "ai_confidence": 0.0,
-      "ai_reason": "Natural optical image characteristics verified",
-      "user_trust_status": "GREEN",
-      "trust_status": "GREEN",
-      "source_trust_score": 97.3,
-      "verdict_summary": "UNVERIFIED / FALSE REPORT: Contradicted by meteorological observations and lacking corroboration (Score < 27).",
-      "from_cache": false,
-      "from_database": false
-    },
-    "expires_at": 1789168206.4839551,
-    "cached_at": "2026-09-10T23:10:06.483966"
-  },
-  "delhi_flood_28.61_77.21": {
-    "data": {
-      "report_id": 376,
-      "city": "Delhi",
-      "state": "Delhi",
-      "latitude": 28.6139,
-      "longitude": 77.209,
+      "report_id": 559,
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "latitude": 19.076,
+      "longitude": 72.8777,
       "event_type": "Flood",
       "verification_status": "Fake",
-      "verification_score": 15.0,
+      "verification_score": 0.0,
       "hint_breakdown": [
         {
-          "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+5",
-          "points": 5,
-          "passed": true,
-          "status": "Baseline atmospheric telemetry recorded (Minimum baseline: +5 pts) — Live station reports: Broken Clouds, 0mm precip"
-        },
-        {
-          "signal": "IMD Official Gov Bulletin",
-          "weight": "-10",
-          "points": -10,
-          "passed": false,
-          "status": "No matching active IMD warning bulletin for district"
-        },
-        {
-          "signal": "Local Citizen Reports Cluster",
-          "weight": "+20",
-          "points": 20,
-          "passed": true,
-          "status": "High cluster density (38 reports within 25km)"
-        },
-        {
-          "signal": "Account & Source Trust Evaluation",
-          "weight": "+0",
+          "signal": "Image & Media Forensics",
+          "weight": "FAIL",
           "points": 0,
           "passed": false,
-          "status": "RED-LISTED Source (X: @Surya_69696, Warnings: 9) - Disinformation History (0 pts)"
-        },
-        {
-          "signal": "News Media Corroboration",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "No corroborating press or broadcast alerts found"
-        },
-        {
-          "signal": "Metadata Timestamp Verification",
-          "weight": "DIAGNOSTIC",
-          "points": 0,
-          "passed": true,
-          "status": "No embedded EXIF timestamp found (metadata was stripped or not present)."
+          "status": "AI-Generated synthetic media detected (Confidence: 100%) - Media filename indicates AI/synthetic origin ('ai'); Strong diffusion 8px latent grid fingerprint detected (spatial periodicity corr: 0.462); Unnaturally uniform compression error levels (ELA: 0.222) typical of diffusion generation; Synthetic diffusion spectral distribution (ratio: 1.98)"
         }
       ],
-      "is_ai_generated": false,
-      "ai_confidence": 0.0,
-      "ai_reason": "Natural optical image characteristics verified",
-      "user_trust_status": "GREEN",
-      "trust_status": "GREEN",
-      "source_trust_score": 97.3,
-      "verdict_summary": "UNVERIFIED / FALSE REPORT: Contradicted by meteorological observations and lacking corroboration (Score < 27).",
+      "is_ai_generated": true,
+      "ai_confidence": 1.0,
+      "ai_reason": "Media filename indicates AI/synthetic origin ('ai'); Strong diffusion 8px latent grid fingerprint detected (spatial periodicity corr: 0.462); Unnaturally uniform compression error levels (ELA: 0.222) typical of diffusion generation; Synthetic diffusion spectral distribution (ratio: 1.98)",
+      "penalty_action": "SOURCE [Facebook] @Surya allen BLOCKED & PLACED ON RED LIST (Repeated Misinformation / AI Synthetic Fake)",
       "from_cache": false,
-      "from_database": false
+      "from_database": false,
+      "verdict_summary": "Report REJECTED: Synthetic AI-generated weather visual."
     },
-    "expires_at": 1789168225.763122,
-    "cached_at": "2026-09-10T23:10:25.763133"
+    "expires_at": 1791097072.8235426,
+    "cached_at": "2026-10-03T06:57:52.823565"
   },
-  "bhubaneswar_heavy rainfall_20.3_85.82": {
+  "bhubaneswar_heavy rainfall_20.3_85.82_2026-08-25": {
     "data": {
-      "report_id": 499,
+      "report_id": 560,
       "city": "Bhubaneswar",
       "state": "Odisha",
       "latitude": 20.2961,
       "longitude": 85.8245,
       "event_type": "Heavy Rainfall",
       "verification_status": "Othentic",
-      "verification_score": 85.0,
+      "verification_score": 79.0,
       "hint_breakdown": [
         {
           "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+15",
-          "points": 15,
+          "weight": "+14",
+          "points": 14,
           "passed": true,
-          "status": "Corroborated by atmospheric signals (OpenWeather: Light Rain)"
-        },
-        {
-          "signal": "IMD Official Gov Bulletin",
-          "weight": "+30",
-          "points": 30,
-          "passed": true,
-          "status": "Corroborated by IMD (Orange Alert: thunderstorm) — IMD Metro Area Warning (Shivpuri)"
-        },
-        {
-          "signal": "Local Citizen Reports Cluster",
-          "weight": "+20",
-          "points": 20,
-          "passed": true,
-          "status": "High cluster density (27 reports within 25km)"
-        },
-        {
-          "signal": "Account & Source Trust Evaluation",
-          "weight": "+10",
-          "points": 10,
-          "passed": true,
-          "status": "Active Contributor Source (X: @Surya allen, Standard Baseline: +10 pts)"
-        },
-        {
-          "signal": "News Media Corroboration",
-          "weight": "+10",
-          "points": 10,
-          "passed": true,
-          "status": "Corroborated by Indian news feeds / GNews / NewsData"
-        },
-        {
-          "signal": "Metadata Timestamp Verification",
-          "weight": "DIAGNOSTIC",
-          "points": 0,
-          "passed": true,
-          "status": "No embedded EXIF timestamp found (metadata was stripped or not present)."
-        }
-      ],
-      "is_ai_generated": false,
-      "ai_confidence": 0.3,
-      "ai_reason": "Hyper-vivid synthetic chroma distribution (90th percentile saturation: 252.0)",
-      "user_trust_status": "GREEN",
-      "trust_status": "GREEN",
-      "source_trust_score": 97.9,
-      "verdict_summary": "VERIFIED TRUE WEATHER INCIDENT: Highly corroborated across atmospheric & official signals (Score > 60).",
-      "from_cache": false,
-      "from_database": false
-    },
-    "expires_at": 1789190923.7611477,
-    "cached_at": "2026-09-11T05:28:43.761166"
-  },
-  "lucknow_thunderstorm_26.85_80.95": {
-    "data": {
-      "report_id": 380,
-      "city": "Lucknow",
-      "state": "Uttar Pradesh",
-      "latitude": 26.8467,
-      "longitude": 80.9462,
-      "event_type": "Thunderstorm",
-      "verification_status": "Underprocess",
-      "verification_score": 30.0,
-      "hint_breakdown": [
-        {
-          "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+5",
-          "points": 5,
-          "passed": true,
-          "status": "Baseline atmospheric telemetry recorded (Minimum baseline: +5 pts) — Live station reports: Light Rain, 0mm precip"
+          "status": "Windy Model & Archive: Historical date 2026-08-25 corroborated by 6 verified reports on 2026-08-25 (+14 pts)"
         },
         {
           "signal": "IMD Official Gov Bulletin",
           "weight": "+25",
           "points": 25,
           "passed": true,
-          "status": "Corroborated by IMD (Orange Alert: thunderstorm) — IMD State Meteorological Centre (Uttar Pradesh)"
-        },
-        {
-          "signal": "Local Citizen Reports Cluster",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "Low cluster density (2 reports within 25km)"
-        },
-        {
-          "signal": "Account & Source Trust Evaluation",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "RED-LISTED Source (X: @Surya_69696, Warnings: 11) - Disinformation History (0 pts)"
-        },
-        {
-          "signal": "News Media Corroboration",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "No corroborating press or broadcast alerts found"
-        },
-        {
-          "signal": "Metadata Timestamp Verification",
-          "weight": "DIAGNOSTIC",
-          "points": 0,
-          "passed": true,
-          "status": "No embedded EXIF timestamp found (metadata was stripped or not present)."
-        }
-      ],
-      "is_ai_generated": false,
-      "ai_confidence": 0.0,
-      "ai_reason": "Natural optical image characteristics verified",
-      "user_trust_status": "GREEN",
-      "trust_status": "GREEN",
-      "source_trust_score": 97.4,
-      "verdict_summary": "AMBIGUOUS INCIDENT: Sent to Admin Panel review queue for manual forensic audit (Score 27-60).",
-      "from_cache": false,
-      "from_database": false
-    },
-    "expires_at": 1789168257.4414728,
-    "cached_at": "2026-09-10T23:10:57.441485"
-  },
-  "lucknow_strong winds_26.85_80.95": {
-    "data": {
-      "report_id": 386,
-      "city": "Lucknow",
-      "state": "Uttar Pradesh",
-      "latitude": 26.8467,
-      "longitude": 80.9462,
-      "event_type": "Strong Winds",
-      "verification_status": "Fake",
-      "verification_score": 0.0,
-      "hint_breakdown": [
-        {
-          "signal": "Image & Media Forensics",
-          "weight": "FAIL",
-          "points": 0,
-          "passed": false,
-          "status": "AI-Generated synthetic media detected (Confidence: 85%) - Generative model latent dimension (1024x559) without optical camera tags; Diffusion 8px latent grid fingerprint detected (spatial periodicity corr: 0.134); Synthetic diffusion spectral distribution (ratio: 1.68)"
-        }
-      ],
-      "is_ai_generated": true,
-      "ai_confidence": 0.85,
-      "ai_reason": "Generative model latent dimension (1024x559) without optical camera tags; Diffusion 8px latent grid fingerprint detected (spatial periodicity corr: 0.134); Synthetic diffusion spectral distribution (ratio: 1.68)",
-      "penalty_action": "SOURCE [X] @Surya_69696 BLOCKED & PLACED ON RED LIST (Repeated Misinformation / AI Synthetic Fake)",
-      "from_cache": false,
-      "from_database": false,
-      "verdict_summary": "Report REJECTED: Synthetic AI-generated weather visual."
-    },
-    "expires_at": 1789168526.8958855,
-    "cached_at": "2026-09-10T23:15:26.895902"
-  },
-  "guwahati_heavy snowfall_26.14_91.74": {
-    "data": {
-      "report_id": 389,
-      "city": "Guwahati",
-      "state": "Assam",
-      "latitude": 26.1445,
-      "longitude": 91.7362,
-      "event_type": "Heavy Snowfall",
-      "verification_status": "Fake",
-      "verification_score": 0.0,
-      "hint_breakdown": [
-        {
-          "signal": "Image & Media Forensics",
-          "weight": "FAIL",
-          "points": 0,
-          "passed": false,
-          "status": "AI-Generated synthetic media detected (Confidence: 85%) - Generative model latent dimension (1024x559) without optical camera tags; Diffusion 8px latent grid fingerprint detected (spatial periodicity corr: 0.067); Synthetic diffusion spectral distribution (ratio: 1.51)"
-        }
-      ],
-      "is_ai_generated": true,
-      "ai_confidence": 0.85,
-      "ai_reason": "Generative model latent dimension (1024x559) without optical camera tags; Diffusion 8px latent grid fingerprint detected (spatial periodicity corr: 0.067); Synthetic diffusion spectral distribution (ratio: 1.51)",
-      "penalty_action": "Warning issued to verified source; trust status downgraded to GREY.",
-      "from_cache": false,
-      "from_database": false,
-      "verdict_summary": "Report REJECTED: Synthetic AI-generated weather visual."
-    },
-    "expires_at": 1789168623.486017,
-    "cached_at": "2026-09-10T23:17:03.486050"
-  },
-  "jaipur_heavy rainfall_26.91_75.79": {
-    "data": {
-      "report_id": 421,
-      "city": "Jaipur",
-      "state": "Rajasthan",
-      "latitude": 26.9124,
-      "longitude": 75.7873,
-      "event_type": "Heavy Rainfall",
-      "verification_status": "Fake",
-      "verification_score": 0.0,
-      "hint_breakdown": [
-        {
-          "signal": "Image & Media Forensics",
-          "weight": "FAIL",
-          "points": 0,
-          "passed": false,
-          "status": "AI-Generated synthetic media detected (Confidence: 100%) - Media filename contains 'fake' marker; Canonical AI generative resolution (1024x559) with no camera hardware tags; Hyper-vivid synthetic chroma distribution (90th percentile saturation: 205.0)"
-        }
-      ],
-      "is_ai_generated": true,
-      "ai_confidence": 1.0,
-      "ai_reason": "Media filename contains 'fake' marker; Canonical AI generative resolution (1024x559) with no camera hardware tags; Hyper-vivid synthetic chroma distribution (90th percentile saturation: 205.0)",
-      "penalty_action": "SOURCE [X] @Surya_69696 BLOCKED & PLACED ON RED LIST (Repeated Misinformation / AI Synthetic Fake)",
-      "from_cache": false,
-      "from_database": false,
-      "verdict_summary": "Report REJECTED: Synthetic AI-generated weather visual."
-    },
-    "expires_at": 1789169851.3243783,
-    "cached_at": "2026-09-10T23:37:31.324419"
-  },
-  "bhubaneswar_earthquake_20.3_85.82": {
-    "data": {
-      "report_id": 501,
-      "city": "Bhubaneswar",
-      "state": "Odisha",
-      "latitude": 20.2961,
-      "longitude": 85.8245,
-      "event_type": "Earthquake",
-      "verification_status": "Fake",
-      "verification_score": 20.0,
-      "hint_breakdown": [
-        {
-          "signal": "Atmospheric Telemetry (Windy & OpenWeather)",
-          "weight": "+0",
-          "points": 0,
-          "passed": false,
-          "status": "Inapplicable: Atmospheric weather models do not measure seismic tectonic tremors."
-        },
-        {
-          "signal": "IMD Official Gov Bulletin",
-          "weight": "-20",
-          "points": -20,
-          "passed": false,
-          "status": "Contradicted by National Center for Seismology (IMD-MoES Official Seismic Network): CONTRADICTED: No earthquake or seismic tremor recorded by the National Center for Seismology (IMD-MoES) in Bhubaneswar, Odisha."
+          "status": "Corroborated by IMD (Orange Alert: rainfall) — IMD Regional Met Centre Bulletin"
         },
         {
           "signal": "Local Citizen Reports Cluster",
           "weight": "+20",
           "points": 20,
           "passed": true,
-          "status": "High cluster density (8 reports within 25km)"
+          "status": "High cluster density (11 reports within 25km)"
         },
         {
           "signal": "Account & Source Trust Evaluation",
           "weight": "+10",
           "points": 10,
           "passed": true,
-          "status": "Active Contributor Source (X: @Surya allen, Standard Baseline: +10 pts)"
+          "status": "Verified Social Source (FaceBook: @Surya_69, Trust Score: 90.0%)"
         },
         {
           "signal": "News Media Corroboration",
@@ -1638,12 +386,12 @@
       "ai_reason": "Hyper-vivid synthetic chroma distribution (90th percentile saturation: 252.0)",
       "user_trust_status": "GREEN",
       "trust_status": "GREEN",
-      "source_trust_score": 97.9,
-      "verdict_summary": "UNVERIFIED / FALSE REPORT: Contradicted by meteorological observations and lacking corroboration (Score < 27).",
+      "source_trust_score": 98.4,
+      "verdict_summary": "VERIFIED TRUE WEATHER INCIDENT: Highly corroborated across atmospheric & official signals (Score > 60).",
       "from_cache": false,
       "from_database": false
     },
-    "expires_at": 1789191077.2128081,
-    "cached_at": "2026-09-11T05:31:17.212834"
+    "expires_at": 1791097151.7976768,
+    "cached_at": "2026-10-03T06:59:11.797688"
   }
 }

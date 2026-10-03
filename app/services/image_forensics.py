@@ -37,7 +37,9 @@ AI_SOFTWARE_SIGNATURES = [
     "midjourney", "stable diffusion", "dall-e", "dalle", "adobe firefly", "firefly",
     "bing image creator", "craiyon", "novelai", "artbreeder", "deepai", "photoshop express",
     "generative ai", "comfyui", "automatic1111", "invokeai", "c2pa", "imagen", "flux",
-    "sdxl", "chatgpt", "copilot", "synthetic", "runway", "sora", "pika"
+    "sdxl", "chatgpt", "copilot", "synthetic", "runway", "sora", "pika", "minimax",
+    "kapwing", "kling", "luma", "hailuo", "vidu", "cogvideo", "animatediff",
+    "stable video", "svd", "invideo", "synthesia", "heygen", "leonardo", "veo", "genmo"
 ]
 
 AI_FILENAME_KEYWORDS = [
@@ -46,12 +48,22 @@ AI_FILENAME_KEYWORDS = [
     "generated", "image_fx", "imagen", "txt2img"
 ]
 
+AI_VIDEO_KEYWORDS = [
+    "ai", "fake", "synthetic", "deepfake", "generated", "txt2vid", "img2vid", "vid2vid",
+    "minimax", "kapwing", "sora", "runway", "luma", "pika", "kling", "hailuo", "vidu",
+    "cogvideo", "animatediff", "stable-video", "svd", "invideo", "synthesia", "heygen",
+    "leonardo", "veo", "genmo", "gen-", "gen_", "prompt", "t2v", "i2v"
+]
+
 AI_CANONICAL_PAIRS = {
     (512, 512), (768, 768), (1024, 1024),
     (1152, 896), (896, 1152),
     (1216, 832), (832, 1216),
     (1344, 768), (768, 1344),
     (1536, 640), (640, 1536),
+    (576, 1024), (1024, 576),
+    (768, 1024), (1024, 768),
+    (512, 768), (768, 512),
     (952, 1024), (1024, 550), (460, 1024),
     (1024, 559), (1024, 544),
     (1792, 1024), (1024, 1792)
@@ -372,12 +384,17 @@ def parse_datetime_flexible(dt_str: Optional[str]) -> Optional[datetime]:
     formats = [
         "%Y:%m:%d %H:%M:%S",
         "%Y-%m-%d %H:%M:%S",
+        "%Y-%m-%d %H:%M",
+        "%Y:%m:%d %H:%M",
         "%Y-%m-%dT%H:%M:%S",
         "%Y-%m-%dT%H:%M:%S.%f",
+        "%Y-%m-%dT%H:%M",
         "%Y-%m-%d",
         "%Y:%m:%d",
         "%d-%m-%Y %H:%M:%S",
         "%d/%m/%Y %H:%M:%S",
+        "%d-%m-%Y %H:%M",
+        "%d/%m/%Y %H:%M",
         "%d/%m/%Y",
         "%d-%m-%Y",
     ]
@@ -453,6 +470,136 @@ def extract_video_metadata(video_bytes: bytes) -> Dict[str, Any]:
     return metadata
 
 
+def detect_ai_video(
+    video_bytes: bytes,
+    filename: Optional[str] = None,
+    metadata: Optional[Dict[str, Any]] = None,
+) -> Tuple[bool, float, str, float]:
+    """
+    Forensic analysis for AI-generated / synthetic video detection (Kapwing, Minimax, Sora, Runway, Kling, Luma, Pika, etc.).
+    Evaluates:
+    1. Video filename explicit AI markers (e.g. minimax, kapwing, ai, gen-, sora, etc.)
+    2. Video container binary signatures and web-encoder tags (absence of real camera tags, Lavf/Lavc)
+    3. Multi-frame spatial forensic analysis (canonical generative resolutions, latent grid, chroma distribution, ELA)
+    Returns: (is_ai_generated, ai_score, ai_reason, ela_score)
+    """
+    ai_score = 0.0
+    reasons = []
+    has_explicit_ai = False
+
+    # 1. Filename check
+    if filename:
+        fn_lower = filename.lower()
+        if "fake" in fn_lower:
+            ai_score += 0.85
+            has_explicit_ai = True
+            reasons.append("Video filename contains 'fake' marker")
+        elif re.search(r'(^|[^a-z0-9])ai([^a-z0-9]|$)', fn_lower):
+            ai_score += 0.85
+            has_explicit_ai = True
+            reasons.append("Video filename indicates AI/synthetic origin ('ai')")
+        else:
+            for kw in AI_VIDEO_KEYWORDS:
+                if kw in fn_lower:
+                    ai_score += 0.85
+                    has_explicit_ai = True
+                    reasons.append(f"Video filename indicates AI video generator ('{kw}')")
+                    break
+
+    # 2. Container binary check
+    container_sample = video_bytes[:65536] + (video_bytes[-65536:] if len(video_bytes) > 131072 else b"")
+    container_lower = container_sample.lower()
+    for sig in [b"kapwing", b"minimax", b"runway", b"kling", b"pika", b"luma", b"sora", b"invideo", b"synthesia", b"heygen", b"hailuo", b"vidu", b"animatediff"]:
+        if sig in container_lower:
+            ai_score += 0.85
+            has_explicit_ai = True
+            reasons.append(f"Video container embeds AI tool signature ({sig.decode('ascii')})")
+            break
+
+    # 3. Multi-frame extraction & spatial forensics
+    tmp_path = None
+    ela_score = 0.0
+    try:
+        import tempfile
+        try:
+            import cv2
+        except ImportError:
+            cv2 = None
+
+        if cv2 is not None:
+            with tempfile.NamedTemporaryFile(suffix=".mp4", delete=False) as tf:
+                tf.write(video_bytes)
+                tmp_path = tf.name
+
+            cap = cv2.VideoCapture(tmp_path)
+            if cap.isOpened():
+                total = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+                w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+                h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+                is_canonical = (w, h) in AI_CANONICAL_PAIRS or (h, w) in AI_CANONICAL_PAIRS
+                if is_canonical:
+                    ai_score += 0.35
+                    reasons.append(f"Canonical AI generative video resolution ({w}x{h})")
+
+                # Sample keyframe from middle of video
+                mid_idx = total // 2 if total > 0 else 0
+                cap.set(cv2.CAP_PROP_POS_FRAMES, mid_idx)
+                ret, frame = cap.read()
+                if ret and frame is not None:
+                    img = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+                    hsv = np.array(img.convert("HSV"), dtype=np.float32)
+                    sat = hsv[:, :, 1]
+                    p90 = float(np.percentile(sat, 90))
+                    if p90 >= 185.0:
+                        ai_score += 0.30
+                        reasons.append(f"Hyper-saturated synthetic chroma distribution in video frames ({p90:.1f})")
+
+                    # Error Level Analysis on frame
+                    buf = io.BytesIO()
+                    img.convert("RGB").save(buf, format="JPEG", quality=90)
+                    buf.seek(0)
+                    reloaded = Image.open(buf).convert("RGB")
+                    ela = np.array(ImageChops.difference(img.convert("RGB"), reloaded), dtype=np.float32)
+                    ela_score = float(np.mean(ela))
+
+                    # Latent grid spatial correlation (avoid DCT false positive on low-res compressed video)
+                    if min(w, h) >= 512 and (is_canonical or has_explicit_ai or p90 >= 180.0):
+                        gray_arr = np.array(img.convert("L"), dtype=np.float32)
+                        smooth = (gray_arr[:-2, :-2] + gray_arr[:-2, 1:-1] + gray_arr[:-2, 2:] +
+                                  gray_arr[1:-1, :-2] + gray_arr[1:-1, 1:-1] + gray_arr[1:-1, 2:] +
+                                  gray_arr[2:, :-2] + gray_arr[2:, 1:-1] + gray_arr[2:, 2:]) / 9.0
+                        residual = gray_arr[1:-1, 1:-1] - smooth
+                        patch = residual[48:-48, 48:-48] if min(gray_arr.shape) > 120 else residual
+                        p_norm = (patch - patch.mean()) / (patch.std() + 1e-5)
+                        corr_x8 = float(np.mean(p_norm[:, :-8] * p_norm[:, 8:]))
+                        corr_y8 = float(np.mean(p_norm[:-8, :] * p_norm[8:, :]))
+                        max_corr8 = max(corr_x8, corr_y8)
+                        if max_corr8 >= 0.20:
+                            ai_score += 0.25
+                            reasons.append(f"Diffusion latent grid spatial periodicity ({max_corr8:.3f})")
+            cap.release()
+    except Exception as e:
+        logger.warning(f"Error in video AI frame detection: {e}")
+    finally:
+        if tmp_path and os.path.exists(tmp_path):
+            try:
+                os.remove(tmp_path)
+            except Exception:
+                pass
+
+    # Check camera hardware tags
+    has_camera = metadata and (metadata.get("camera") or metadata.get("gps"))
+    if not has_camera and ai_score >= 0.35:
+        ai_score += 0.15
+        reasons.append("Absence of physical camera hardware EXIF tags in video stream")
+
+    is_ai = ai_score >= 0.50
+    ai_score = min(1.0, max(0.0, ai_score))
+    reason = "; ".join(reasons) if reasons else ("Authentic optical video stream verified" if not is_ai else "AI-generated synthetic video characteristics detected")
+    return is_ai, ai_score, reason, ela_score
+
+
 def analyze_image(image_bytes: bytes, filename: Optional[str] = None, incident_time: Optional[str] = None) -> Dict[str, Any]:
     """
     Main forensic pipeline for incoming images & videos.
@@ -470,18 +617,19 @@ def analyze_image(image_bytes: bytes, filename: Optional[str] = None, incident_t
     if is_video:
         video_meta = extract_video_metadata(image_bytes)
         time_match, time_msg = check_metadata_time_match(video_meta.get("timestamp"), incident_time)
+        is_ai, ai_score, ai_reason, ela_score = detect_ai_video(image_bytes, filename=filename, metadata=video_meta)
         return {
             "img_hash": f"vid_{hash(image_bytes[:256]) & 0xFFFFFFFFFFFFFFFF:016x}",
             "exif_gps": video_meta.get("gps"),
             "exif_latitude": video_meta.get("latitude"),
             "exif_longitude": video_meta.get("longitude"),
             "exif_timestamp": video_meta.get("timestamp"),
-            "exif_camera": "Digital Video Recorder",
-            "exif_software": "Video Codec Stream",
-            "ela_score": 0.0,
-            "is_ai_generated": False,
-            "ai_score": 0.0,
-            "ai_reason": "Video container verification passed",
+            "exif_camera": "Digital Video Recorder" if not is_ai else "AI Video Synthesis Engine",
+            "exif_software": "Video Codec Stream" if not is_ai else "Synthetic Diffusion Video Model",
+            "ela_score": ela_score,
+            "is_ai_generated": is_ai,
+            "ai_score": ai_score,
+            "ai_reason": ai_reason,
             "is_video": True,
             "metadata_time_match": time_match,
             "metadata_time_diagnostic": time_msg,

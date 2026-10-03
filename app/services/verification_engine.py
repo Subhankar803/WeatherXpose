@@ -80,7 +80,10 @@ def process_and_verify_incident(
         event_type = text_claimed_event
 
     # 1. CHECK PERSISTENT DISK / REDIS INCIDENT CACHE
+    date_part = str(incident_time)[:10].strip() if incident_time else ""
     cache_lookup_key = f"{city_clean.lower()}_{event_type.lower()}_{round(latitude, 2)}_{round(longitude, 2)}"
+    if date_part:
+        cache_lookup_key += f"_{date_part}"
     if not media_bytes:
         cached_result = get_cached_incident_result(cache_lookup_key)
         if cached_result:
@@ -294,6 +297,7 @@ def process_and_verify_incident(
         metadata_time_match=meta_time_match,
         metadata_time_diagnostic=meta_time_diag,
         db_session=db,
+        incident_time=incident_time,
     )
 
     score_sum = signal_results["score_sum"]
